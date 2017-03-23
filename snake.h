@@ -21,7 +21,8 @@
 
 class Snake : public QObject, public QGraphicsRectItem
 {
-//Q_OBJECT
+Q_OBJECT
+
 public:
     //enum for direction switching
     enum Direction{
@@ -33,8 +34,7 @@ public:
     };
     Snake(QGraphicsScene &scene, QObject *parent = 0);
 
-    //Key press events
-    void keyPressEvent(QKeyEvent *event);
+
 
     //direction setter
     void setDirection(Direction dir);

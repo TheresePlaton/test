@@ -1,6 +1,6 @@
 #ifndef SNAKEWINDOW_H
 #define SNAKEWINDOW_H
-
+#include <QKeyEvent>
 #include <QMainWindow>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -10,6 +10,9 @@
 #include <QBrush>
 #include "snake.h"
 #include "powerup.h"
+
+class QGraphicsScene;
+class Snake;
 class QKeyEvent;
 
 namespace Ui {
@@ -23,6 +26,7 @@ class SnakeWindow : public QMainWindow
 public:
     explicit SnakeWindow(QWidget *parent = 0);
     ~SnakeWindow();
+
 
 
 private slots:

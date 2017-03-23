@@ -5,6 +5,8 @@
 #include <QEvent>
 #include <QGraphicsScene>
 #include <QKeyEvent>
+#include <QEvent>
+#include "snake.h"
 SnakeWindow::SnakeWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::SnakeWindow)
