@@ -77,6 +77,11 @@ int Snake::getSnakeLength()
     return bodies.size()+1;
 }
 
+void Snake::getDir()
+{
+    qDebug()<<movingDirection;
+}
+
 /**
  * @brief Snake::move
  */
@@ -109,8 +114,12 @@ void Snake::move()
         bodies[i]->setPos(bodies[i+1]->pos());
     }
 
+
+
     // move front body part to previous position of head
+    if(this->movingDirection!=Stop){
     bodies.last()->setPos(lastPosition);
+    }
 
 
 

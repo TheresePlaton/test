@@ -28,6 +28,8 @@ public:
     ~SnakeWindow();
 
 
+public slots:
+    void gameLoop();
 
 private slots:
     void on_exit_Game_Btn_clicked();
@@ -46,7 +48,7 @@ private:
     QGraphicsScene *scene;
     Snake *shead;
     BodyOfSnake *body;
-    QTimer *gameStart;
+    QTimer *gameStart = new QTimer();
 };
 
 #endif // SNAKEWINDOW_H

@@ -7,18 +7,30 @@
 #include <QKeyEvent>
 #include <QEvent>
 #include "snake.h"
+#include <QDebug>
+
 SnakeWindow::SnakeWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::SnakeWindow)
 {
     ui->setupUi(this);
-    scene = new QGraphicsScene();
+    scene = new QGraphicsScene(0,0,681,451);
     ui->graphicsView_snake->setScene(scene);
+    //find out how to set auto focus on graphicsView_snake
+    scene->setFocus();
+
+
 }
 
 SnakeWindow::~SnakeWindow()
 {
     delete ui;
+}
+
+void SnakeWindow::gameLoop()
+{
+    shead->move();
+    shead->getSnakeLength();
 }
 
 void SnakeWindow::on_exit_Game_Btn_clicked()
@@ -33,13 +45,14 @@ void SnakeWindow::on_pause_Game_Btn_clicked()
 
 void SnakeWindow::on_start_Game_Btn_clicked()
 {
+
     //creating head of the snake item
         shead = new Snake(*scene, this);
         scene->addItem(shead);
 
         //head reacts on key events is true
         shead->setFocus();
-
+        scene->installEventFilter(this);
 
         //adding a power-up
         PowerUp *pUp = new PowerUp();
@@ -50,7 +63,6 @@ void SnakeWindow::on_start_Game_Btn_clicked()
         body->setPos(0,20);
         scene->addItem(body);
         shead->appendBodies(*body);
-        gameStart= new QTimer();
         //starts movement of snake
         //shead->snakeIsMoving();
         connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
@@ -59,13 +71,13 @@ void SnakeWindow::on_start_Game_Btn_clicked()
 }
 //Set key behaviour
 void SnakeWindow::handleKeyPressed(QKeyEvent *event)
-{
+{    
     //if (!isPause)
         switch (event->key()) {
             case Qt::Key_Left:
                 shead->setDirection(Snake::Left);
                 break;
-            case Qt::Key_Right:
+            case Qt::Key_Right:                
                 shead->setDirection(Snake::Right);
                 break;
             case Qt::Key_Up:
@@ -78,7 +90,7 @@ void SnakeWindow::handleKeyPressed(QKeyEvent *event)
                 //pause();
                 break;
         }
-    //else resume();
+    //else resume();a
 }
 
 bool SnakeWindow::eventFilter(QObject *object, QEvent *event)

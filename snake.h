@@ -54,6 +54,8 @@ public:
 
     int getSnakeLength();
 
+    void getDir();
+
 
 
 private:
