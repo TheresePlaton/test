@@ -16,7 +16,6 @@ Snake::Snake(QGraphicsScene &scene, QObject *parent) :
     QObject(parent),
      scene(scene)
 {
-
     setRect(0,0,20,20);
     QBrush brush;
     //sets color and solid for head of snake
@@ -153,6 +152,4 @@ void Snake::move()
 
         }
     }
-
-
 }
