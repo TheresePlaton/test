@@ -5,6 +5,8 @@
 #include <QObject>
 #include <typeinfo>
 #include <powerup.h>
+#include "gameover.h"
+#include "ui_gameover.h"
 
 
 
@@ -14,7 +16,7 @@ extern SnakeWindow *snakeWindow;
 
 Snake::Snake(QGraphicsScene &scene, QObject *parent) :
     QObject(parent),
-     scene(scene)
+    scene(scene)
 {
     setRect(0,0,20,20);
     QBrush brush;
@@ -81,11 +83,19 @@ void Snake::getDir()
     qDebug()<<movingDirection;
 }
 
+bool Snake::getHead_in_tail()
+{
+    return head_in_tail;
+}
+
+
 /**
  * @brief Snake::move
  */
 void Snake::move()
 {
+
+
     //updates last position of head to pass to tail
     lastPosition = pos();
     //qDebug()<<lastPosition;
@@ -117,7 +127,7 @@ void Snake::move()
 
     // move front body part to previous position of head
     if(this->movingDirection!=Stop){
-    bodies.last()->setPos(lastPosition);
+        bodies.last()->setPos(lastPosition);
     }
 
 
@@ -141,7 +151,6 @@ void Snake::move()
                 qDebug()<<"Crash!";
                 qDebug()<<p->getX();
                 qDebug()<<p->getY();
-                //qDebug()<<getSnakeLength();
 
                 p->setConsumed(true);
                 extendSnake();
@@ -151,5 +160,14 @@ void Snake::move()
             }
 
         }
+        //tests whether or not head crashed in tail
+        if(this->x()==list[i]->x()&&this->y()==list[i]->y())
+        {
+            head_in_tail=true;
+            qDebug()<<"head crashed in tail";
+        }
+
+
     }
+
 }

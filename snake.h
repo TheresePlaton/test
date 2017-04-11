@@ -56,6 +56,8 @@ public:
 
     void getDir();
 
+    bool getHead_in_tail();
+
 
 
 private:
@@ -71,6 +73,7 @@ private:
      */
     QList<BodyOfSnake*> bodies;
     QGraphicsScene &scene;
+    bool head_in_tail;
 public slots:
 
 };

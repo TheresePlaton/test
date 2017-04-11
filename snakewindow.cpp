@@ -8,6 +8,8 @@
 #include <QEvent>
 #include "snake.h"
 #include <QDebug>
+#include "gameover.h"
+#include "ui_gameover.h"
 
 SnakeWindow::SnakeWindow(QWidget *parent) :
     QMainWindow(parent),
