@@ -3,8 +3,9 @@
 #include <QObject>
 #include <QGraphicsRectItem>
 #include <QBrush>
+#include <QGraphicsPixmapItem>
 
-class PowerUp : public QGraphicsRectItem
+class PowerUp : public QGraphicsPixmapItem
 {
 public:
     PowerUp(QGraphicsItem *parent=NULL);

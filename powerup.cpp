@@ -20,12 +20,14 @@ PowerUp::PowerUp(QGraphicsItem *parent)
 
     restX = _rx;
     restY = _ry;
-    setRect(restX,restY, 20,20);
-    //graphical properties of rect
-    QBrush brush;
-    brush.setStyle(Qt::SolidPattern);
-    brush.setColor(Qt::red);
-    setBrush(brush);
+
+    setPixmap(QPixmap(":/sounds/resourses/images/smiley-face-png-003"));
+//    setRect(restX,restY, 20,20);
+//    //graphical properties of rect
+//    QBrush brush;
+//    brush.setStyle(Qt::SolidPattern);
+//    brush.setColor(Qt::red);
+//    setBrush(brush);
 }
 
 bool PowerUp::getConsumed() const
