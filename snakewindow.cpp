@@ -10,6 +10,7 @@
 #include <QDebug>
 #include "gameover.h"
 #include "ui_gameover.h"
+#include <QString>
 
 SnakeWindow::SnakeWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -41,6 +42,11 @@ void SnakeWindow::gameLoop()
 {
     shead->move();
     shead->getSnakeLength();
+    //connecting ui progress bar to a score value
+    int score = shead->getSnakeLength() * 10;
+    this->ui->progress_bar_level->setFormat("Score: "+QString::number(score));
+    this->ui->progress_bar_level->setMaximum(500);
+    this->ui->progress_bar_level->setValue(score);
     //opens game over screen
     if(isDead)
     {
