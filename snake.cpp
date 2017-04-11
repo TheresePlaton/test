@@ -150,7 +150,9 @@ void Snake::move()
             PowerUp* p = (PowerUp*) list[i];
             if(p->getConsumed() == false && p->getX()==this->x() &&p->getY()==this->y() ) {
 
-
+                powerUpSound = new QMediaPlayer();
+                powerUpSound->setMedia(QUrl("qrc:/sounds/resourses/sounds/157217__adamweeden__video-game-gain-xp-level-up.flac"));
+                powerUpSound->play();
                 qDebug()<<"Crash!";
                 qDebug()<<p->getX();
                 qDebug()<<p->getY();

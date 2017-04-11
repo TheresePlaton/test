@@ -75,6 +75,7 @@ private:
     QList<BodyOfSnake*> bodies;
     QGraphicsScene &scene;
     bool head_in_tail = false;
+    QMediaPlayer *powerUpSound;
 
 public slots:
 
