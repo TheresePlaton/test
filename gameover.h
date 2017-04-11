@@ -2,7 +2,11 @@
 #define GAMEOVER_H
 
 #include <QDialog>
-#include "snake.h"
+#include <QMainWindow>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QObject>
+
 
 namespace Ui {
 class GameOver;
