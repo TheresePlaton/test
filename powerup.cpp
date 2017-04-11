@@ -1,5 +1,6 @@
 #include "powerup.h"
-#include <QGlobal.h>
+//#include <QGlobal.h>
+#include <QtGlobal>
 #include <QTime>
 #include <QDebug>
 
