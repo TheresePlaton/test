@@ -11,6 +11,7 @@
 #include "gameover.h"
 #include "ui_gameover.h"
 #include <QString>
+#include <QMediaPlayer>
 
 SnakeWindow::SnakeWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -21,7 +22,9 @@ SnakeWindow::SnakeWindow(QWidget *parent) :
     ui->graphicsView_snake->setScene(scene);
     //find out how to set auto focus on graphicsView_snake
     scene->setFocus();
-
+    QMediaPlayer * music = new QMediaPlayer();
+    music->setMedia(QUrl("qrc:/sounds/resourses/sounds/Chill-house-music-loop-116-bpm.wav"));
+    music->play();
 
 }
 

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/sounds">
+        <file>resourses/sounds/Chill-house-music-loop-116-bpm.wav</file>
+    </qresource>
+    <qresource prefix="/images"/>
+</RCC>
