@@ -8,7 +8,7 @@ GameOver::GameOver(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::GameOver)
 {
-    ui->setupUi(this);
+    ui->setupUi(this);    
 }
 /**
  * @brief GameOver::~GameOver

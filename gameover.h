@@ -2,6 +2,7 @@
 #define GAMEOVER_H
 
 #include <QDialog>
+#include "snake.h"
 
 namespace Ui {
 class GameOver;
