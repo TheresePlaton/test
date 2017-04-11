@@ -165,6 +165,7 @@ void Snake::move()
         {
             head_in_tail=true;
             qDebug()<<"head crashed in tail";
+            qDebug()<<head_in_tail;
         }
 
 

@@ -73,7 +73,7 @@ private:
      */
     QList<BodyOfSnake*> bodies;
     QGraphicsScene &scene;
-    bool head_in_tail;
+    bool head_in_tail = false;
 public slots:
 
 };

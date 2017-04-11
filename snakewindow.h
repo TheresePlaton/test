@@ -10,6 +10,8 @@
 #include <QBrush>
 #include "snake.h"
 #include "powerup.h"
+#include "ui_gameover.h"
+#include "gameover.h"
 
 class QGraphicsScene;
 class Snake;
@@ -26,10 +28,12 @@ class SnakeWindow : public QMainWindow
 public:
     explicit SnakeWindow(QWidget *parent = 0);
     ~SnakeWindow();
+    void gameOver();
 
 
 public slots:
     void gameLoop();
+    bool getCrashed();
 
 private slots:
     void on_exit_Game_Btn_clicked();
@@ -49,6 +53,8 @@ private:
     Snake *shead;
     BodyOfSnake *body;
     QTimer *gameStart = new QTimer();
+    GameOver *gameOverWindow;
+    bool isDead = false;
 };
 
 #endif // SNAKEWINDOW_H
