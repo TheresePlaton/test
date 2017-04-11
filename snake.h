@@ -6,6 +6,7 @@
 #include <QList>
 #include <QPointF>
 #include <QTimer>
+#include <QMediaPlayer>
 /**
  * Snake class used to created the head of the snake as well as implement
  * movement methods.
@@ -74,6 +75,7 @@ private:
     QList<BodyOfSnake*> bodies;
     QGraphicsScene &scene;
     bool head_in_tail = false;
+
 public slots:
 
 };

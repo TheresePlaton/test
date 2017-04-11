@@ -22,7 +22,7 @@ SnakeWindow::SnakeWindow(QWidget *parent) :
     ui->graphicsView_snake->setScene(scene);
     //find out how to set auto focus on graphicsView_snake
     scene->setFocus();
-    QMediaPlayer * music = new QMediaPlayer();
+    music = new QMediaPlayer();
     music->setMedia(QUrl("qrc:/sounds/resourses/sounds/Chill-house-music-loop-116-bpm.wav"));
     music->play();
 
@@ -62,6 +62,7 @@ void SnakeWindow::gameLoop()
     {
         disconnect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
         disconnect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
+        music->stop();
         gameOver();
     }
 }

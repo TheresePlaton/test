@@ -55,6 +55,7 @@ private:
     QTimer *gameStart = new QTimer();
     GameOver *gameOverWindow;
     bool isDead = false;
+    QMediaPlayer * music;
 };
 
 #endif // SNAKEWINDOW_H

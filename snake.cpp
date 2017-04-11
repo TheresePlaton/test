@@ -7,7 +7,7 @@
 #include <powerup.h>
 #include "gameover.h"
 #include "ui_gameover.h"
-
+#include <QMediaPlayer>
 
 
 
@@ -30,6 +30,7 @@ Snake::Snake(QGraphicsScene &scene, QObject *parent) :
 
     //sets default direction
     movingDirection = Stop;
+
 }
 
 
@@ -148,6 +149,8 @@ void Snake::move()
              */
             PowerUp* p = (PowerUp*) list[i];
             if(p->getConsumed() == false && p->getX()==this->x() &&p->getY()==this->y() ) {
+
+
                 qDebug()<<"Crash!";
                 qDebug()<<p->getX();
                 qDebug()<<p->getY();
