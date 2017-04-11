@@ -38,5 +38,5 @@ void GameOver::on_retry_btn_clicked()
  */
 void GameOver::on_exit_game_Btn_clicked()
 {
-
+    this->close();
 }
