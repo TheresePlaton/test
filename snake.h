@@ -7,6 +7,7 @@
 #include <QPointF>
 #include <QTimer>
 #include <QMediaPlayer>
+#include <QGraphicsPixmapItem>
 /**
  * Snake class used to created the head of the snake as well as implement
  * movement methods.
@@ -20,7 +21,7 @@
 
 
 
-class Snake : public QObject, public QGraphicsRectItem
+class Snake : public QObject, public QGraphicsPixmapItem
 {
 Q_OBJECT
 

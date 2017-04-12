@@ -18,12 +18,15 @@ Snake::Snake(QGraphicsScene &scene, QObject *parent) :
     QObject(parent),
     scene(scene)
 {
-    setRect(0,0,20,20);
-    QBrush brush;
-    //sets color and solid for head of snake
-    brush.setStyle(Qt::SolidPattern);
-    brush.setColor(Qt::green);
-    setBrush(brush);
+
+    setPixmap(QPixmap(":/images/resourses/images/head.png"));
+    setPos(0,0);
+//    setRect(0,0,20,20);
+//    QBrush brush;
+//    //sets color and solid for head of snake
+//    brush.setStyle(Qt::SolidPattern);
+//    brush.setColor(Qt::green);
+//    setBrush(brush);
 
     //set snake head rect focusable
     setFlag(QGraphicsItem::ItemIsFocusable, true);
