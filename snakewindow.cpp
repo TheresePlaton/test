@@ -15,6 +15,7 @@
 #include <QBrush>
 #include <QImage>
 #include <QMediaPlaylist>
+#include <QMessageBox>
 
 SnakeWindow::SnakeWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -88,6 +89,19 @@ bool SnakeWindow::getCrashed()
 
 void SnakeWindow::on_exit_Game_Btn_clicked()
 {
+    QMessageBox quitMsgBox;
+    quitMsgBox.setText("Do you really want to quit?");
+    quitMsgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    int ret = quitMsgBox.exec();
+    switch(ret){
+
+    case QMessageBox::Yes:
+        this->close();
+        break;
+    case QMessageBox::No:
+        quitMsgBox.close();
+        break;
+    }
 
 }
 
@@ -144,7 +158,7 @@ void SnakeWindow::on_start_Game_Btn_clicked()
 }
 //Set key behaviour
 void SnakeWindow::handleKeyPressed(QKeyEvent *event)
-{    
+{
     //if (!isPause)
     switch (event->key()) {
     case Qt::Key_Left:
