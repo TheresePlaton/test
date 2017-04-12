@@ -9,6 +9,7 @@
 #include <QTimer>
 #include <QMediaPlayer>
 #include <QGraphicsPixmapItem>
+
 /**
  * Snake class used to created the head of the snake as well as implement
  * movement methods.
@@ -18,11 +19,7 @@
 #include "bodyofsnake.h"
 #include "powerup.h"
 
-
-
-
-
-class Snake : public QObject, public QGraphicsRectItem
+class Snake : public QObject, public QGraphicsPixmapItem
 {
 Q_OBJECT
 
@@ -63,6 +60,8 @@ public:
 
     int getGameScore();
 
+
+
 private:
     //a variable that can stor an x,y coordiante for the object
     QPointF lastPosition;
@@ -80,7 +79,12 @@ private:
     QMediaPlayer *powerUpSound;
     int gameScore=0;
 
+
+    QPixmap *snakeHeadImage;
+
+
 public slots:
+
 
 };
 #endif

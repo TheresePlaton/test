@@ -8,6 +8,7 @@
 #include "gameover.h"
 #include "ui_gameover.h"
 #include <QMediaPlayer>
+#include <QPainter>
 
 
 
@@ -18,15 +19,15 @@ Snake::Snake(QGraphicsScene &scene, QObject *parent) :
     QObject(parent),
     scene(scene)
 {
-
-//  setPixmap(QPixmap(":/images/resourses/images/head.png"));
-//  setPos(0,0);
+    snakeHeadImage = new QPixmap(":/images/resourses/images/head.png");
+    setPixmap(*snakeHeadImage);
+    setPos(0,0);/*
     setRect(0,0,20,20);
     QBrush brush;
     //sets color and solid for head of snake
     brush.setStyle(Qt::SolidPattern);
     brush.setColor(Qt::green);
-    setBrush(brush);
+    setBrush(brush);*/
 
     //set snake head rect focusable
     setFlag(QGraphicsItem::ItemIsFocusable, true);
@@ -96,7 +97,6 @@ int Snake::getGameScore()
 {
     return gameScore;
 }
-
 
 /**
  * @brief Snake::move
