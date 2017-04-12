@@ -2,6 +2,7 @@
 #define SNAKE_H
 #include <QBrush>
 #include <QGraphicsRectItem>
+#include <QGraphicsItem>
 #include <QKeyEvent>
 #include <QList>
 #include <QPointF>
@@ -21,7 +22,7 @@
 
 
 
-class Snake : public QObject, public QGraphicsPixmapItem
+class Snake : public QObject, public QGraphicsRectItem
 {
 Q_OBJECT
 

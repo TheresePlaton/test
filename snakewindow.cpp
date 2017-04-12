@@ -96,6 +96,9 @@ void SnakeWindow::on_pause_Game_Btn_clicked()
 
 }
 
+
+
+
 void SnakeWindow::on_start_Game_Btn_clicked()
 {
 
@@ -108,6 +111,7 @@ void SnakeWindow::on_start_Game_Btn_clicked()
     scene->installEventFilter(this);
 
     //adding a power-up
+
     PowerUp *pUp = new PowerUp();
     scene->addItem(pUp);
 
@@ -121,7 +125,6 @@ void SnakeWindow::on_start_Game_Btn_clicked()
     connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
     connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
     gameStart->start(200);
-
 
 
 }

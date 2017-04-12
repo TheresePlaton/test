@@ -19,14 +19,14 @@ Snake::Snake(QGraphicsScene &scene, QObject *parent) :
     scene(scene)
 {
 
-    setPixmap(QPixmap(":/images/resourses/images/head.png"));
-    setPos(0,0);
-//    setRect(0,0,20,20);
-//    QBrush brush;
-//    //sets color and solid for head of snake
-//    brush.setStyle(Qt::SolidPattern);
-//    brush.setColor(Qt::green);
-//    setBrush(brush);
+//  setPixmap(QPixmap(":/images/resourses/images/head.png"));
+//  setPos(0,0);
+    setRect(0,0,20,20);
+    QBrush brush;
+    //sets color and solid for head of snake
+    brush.setStyle(Qt::SolidPattern);
+    brush.setColor(Qt::green);
+    setBrush(brush);
 
     //set snake head rect focusable
     setFlag(QGraphicsItem::ItemIsFocusable, true);
@@ -141,6 +141,7 @@ void Snake::move()
 
 
 
+
     //Implements collision test.
     QList<QGraphicsItem*> list = collidingItems();
     //qDebug()<<"Type of snake: "<<typeid(*this).name();
@@ -171,6 +172,7 @@ void Snake::move()
                 delete p;
                 PowerUp *p = new PowerUp();
                 scene.addItem(p);
+                continue;
             }
 
         }
