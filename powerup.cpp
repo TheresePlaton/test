@@ -21,7 +21,8 @@ PowerUp::PowerUp(QGraphicsItem *parent)
     restX = _rx;
     restY = _ry;
 
-    setPixmap(QPixmap(":/sounds/resourses/images/smiley-face-png-003"));
+    setPixmap(QPixmap(":/images/resourses/images/smiley-face-png-003.png"));
+    setPos(restX, restY);
 //    setRect(restX,restY, 20,20);
 //    //graphical properties of rect
 //    QBrush brush;
