@@ -89,6 +89,11 @@ bool Snake::getHead_in_tail()
     return head_in_tail;
 }
 
+int Snake::getGameScore()
+{
+    return gameScore;
+}
+
 
 /**
  * @brief Snake::move
@@ -156,6 +161,7 @@ void Snake::move()
                 qDebug()<<"Crash!";
                 qDebug()<<p->getX();
                 qDebug()<<p->getY();
+                gameScore=gameScore+10;
 
                 p->setConsumed(true);
                 extendSnake();

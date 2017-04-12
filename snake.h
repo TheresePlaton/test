@@ -59,7 +59,7 @@ public:
 
     bool getHead_in_tail();
 
-
+    int getGameScore();
 
 private:
     //a variable that can stor an x,y coordiante for the object
@@ -76,6 +76,7 @@ private:
     QGraphicsScene &scene;
     bool head_in_tail = false;
     QMediaPlayer *powerUpSound;
+    int gameScore=0;
 
 public slots:
 

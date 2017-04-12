@@ -57,7 +57,7 @@ void SnakeWindow::gameLoop()
     shead->getSnakeLength();
 
     //connecting ui progress bar to a score value
-    int score = shead->getSnakeLength() * 10;
+    int score = shead->getGameScore();
     this->ui->progress_bar_level->setTextVisible(false);
     this->ui->progress_bar_level->setMaximum(500);
     this->ui->progress_bar_level->setValue(score);
