@@ -10,5 +10,6 @@
         <file>resourses/images/headDown.png</file>
         <file>resourses/images/headLeft.png</file>
         <file>resourses/images/headUp.png</file>
+        <file>resourses/images/body_ball.png</file>
     </qresource>
 </RCC>

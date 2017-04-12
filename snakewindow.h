@@ -56,6 +56,7 @@ private:
     GameOver *gameOverWindow;
     bool isDead = false;
     QMediaPlayer * music;
+    bool gameIsPaused=false;
 };
 
 #endif // SNAKEWINDOW_H

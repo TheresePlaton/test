@@ -5,9 +5,10 @@
 #define BODYOFSNAKE_H
 #include <QGraphicsRectItem>
 #include <QBrush>
+#include <QGraphicsPixmapItem>
 
 
-class BodyOfSnake : public QGraphicsRectItem
+class BodyOfSnake : public QGraphicsPixmapItem
 {
 
 public:
@@ -18,6 +19,8 @@ public:
     BodyOfSnake(QGraphicsItem *parent = NULL);
 
     BodyOfSnake(int x, int y);
+private:
+    QPixmap *bodyImage;
 };
 
 #endif // BODYOFSNAKE_H

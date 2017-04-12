@@ -24,7 +24,7 @@ SnakeWindow::SnakeWindow(QWidget *parent) :
     ui->setupUi(this);
     scene = new QGraphicsScene(0,0,681,451);
     scene->setBackgroundBrush(QBrush(QImage(":/images/resourses/images/background.jpg")));
-    ui->graphicsView_snake->setScene(scene);    
+    ui->graphicsView_snake->setScene(scene);
 
     scene->setFocus();
     //Adds background music and loops it with playlist
@@ -93,7 +93,21 @@ void SnakeWindow::on_exit_Game_Btn_clicked()
 
 void SnakeWindow::on_pause_Game_Btn_clicked()
 {
+    gameIsPaused = !gameIsPaused;
 
+    //pauses and pauses game timer and background music
+    if(gameIsPaused){
+        disconnect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
+        disconnect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
+        music->setMuted(true);
+    }
+    if(!gameIsPaused){
+        connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
+        connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
+        gameStart->start(200);
+        music->setMuted(false);
+
+    }
 }
 
 

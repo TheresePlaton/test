@@ -6,24 +6,24 @@
  */
 BodyOfSnake::BodyOfSnake(QGraphicsItem *parent)
 {
-    //x,y, heigth, width
-    setRect(0,0,20,20);
-
-    //graphical properties of rect
-    QBrush brush;
-    brush.setStyle(Qt::SolidPattern);
-    brush.setColor(Qt::blue);
-    setBrush(brush);
+    bodyImage = new QPixmap(":/images/resourses/images/body_ball.png");
+    setPixmap(*bodyImage);
+    setPos(0,0);
+    Q_UNUSED(parent);
 
 }
 
 BodyOfSnake::BodyOfSnake(int x, int y)
 {
-    setRect(x,y,20,20);
+    bodyImage = new QPixmap(":/images/resourses/images/body_ball.png");
+    setPixmap(*bodyImage);
+    setPos(x,y);
 
-    //graphical properties of rect
-    QBrush brush;
-    brush.setStyle(Qt::SolidPattern);
-    brush.setColor(Qt::blue);
-    setBrush(brush);
+//    setRect(x,y,20,20);
+
+//    //graphical properties of rect
+//    QBrush brush;
+//    brush.setStyle(Qt::SolidPattern);
+//    brush.setColor(Qt::blue);
+//    setBrush(brush);
 }
