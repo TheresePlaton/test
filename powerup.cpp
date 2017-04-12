@@ -23,12 +23,7 @@ PowerUp::PowerUp(QGraphicsItem *parent)
 
     setPixmap(QPixmap(":/images/resourses/images/smiley-face-png-003.png"));
     setPos(restX, restY);
-//    setRect(restX,restY, 20,20);
-//    //graphical properties of rect
-//    QBrush brush;
-//    brush.setStyle(Qt::SolidPattern);
-//    brush.setColor(Qt::red);
-//    setBrush(brush);
+
 }
 
 bool PowerUp::getConsumed() const

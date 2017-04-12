@@ -12,18 +12,28 @@
 #include "ui_gameover.h"
 #include <QString>
 #include <QMediaPlayer>
+#include <QBrush>
+#include <QImage>
+#include <QMediaPlaylist>
 
 SnakeWindow::SnakeWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::SnakeWindow)
 {
+    //sets UI form and scene
     ui->setupUi(this);
     scene = new QGraphicsScene(0,0,681,451);
-    ui->graphicsView_snake->setScene(scene);
-    //find out how to set auto focus on graphicsView_snake
+    scene->setBackgroundBrush(QBrush(QImage(":/images/resourses/images/background.jpg")));
+    ui->graphicsView_snake->setScene(scene);    
+
     scene->setFocus();
+    //Adds background music and loops it with playlist
+    QMediaPlaylist *playlist = new QMediaPlaylist();
+    playlist->addMedia(QUrl("qrc:/sounds/resourses/sounds/Chill-house-music-loop-116-bpm.wav"));
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
+
     music = new QMediaPlayer();
-    music->setMedia(QUrl("qrc:/sounds/resourses/sounds/Chill-house-music-loop-116-bpm.wav"));
+    music->setMedia(playlist);
     music->play();
 
 }
