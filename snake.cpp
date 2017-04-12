@@ -21,7 +21,8 @@ Snake::Snake(QGraphicsScene &scene, QObject *parent) :
 {
     snakeHeadImage = new QPixmap(":/images/resourses/images/head.png");
     setPixmap(*snakeHeadImage);
-    setPos(0,0);/*
+    setPos(0,0);
+    /*
     setRect(0,0,20,20);
     QBrush brush;
     //sets color and solid for head of snake
@@ -47,16 +48,36 @@ void Snake::setDirection(Direction dir)
 {
     switch (dir) {
     case Up:
-        if(movingDirection!=Up && movingDirection!=Down) movingDirection=Up;
+        if(movingDirection!=Up && movingDirection!=Down)
+        {
+            movingDirection=Up;
+            snakeHeadImage = new QPixmap(":/images/resourses/images/headUp.png");
+            this->setPixmap(*snakeHeadImage);
+        }
         break;
     case Down:
-        if(movingDirection!=Down && movingDirection!=Up) movingDirection=Down;
+        if(movingDirection!=Down && movingDirection!=Up)
+        {
+            movingDirection=Down;
+            snakeHeadImage = new QPixmap(":/images/resourses/images/headDown.png");
+            this->setPixmap(*snakeHeadImage);
+        }
         break;
     case Left:
-        if(movingDirection!=Left && movingDirection!=Right) movingDirection=Left;
+        if(movingDirection!=Left && movingDirection!=Right)
+        {
+            movingDirection=Left;
+            snakeHeadImage = new QPixmap(":/images/resourses/images/headLeft.png");
+            this->setPixmap(*snakeHeadImage);
+        }
         break;
     case Right:
-        if(movingDirection!=Right && movingDirection!=Left) movingDirection=Right;
+        if(movingDirection!=Right && movingDirection!=Left)
+        {
+            movingDirection=Right;
+            snakeHeadImage = new QPixmap(":/images/resourses/images/head.png");
+            this->setPixmap(*snakeHeadImage);
+        }
         break;
     default: break;
 
