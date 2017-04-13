@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/sounds">
-        <file>resourses/sounds/Chill-house-music-loop-116-bpm.wav</file>
         <file>resourses/sounds/157217__adamweeden__video-game-gain-xp-level-up.flac</file>
+        <file>resourses/sounds/sonx.wav</file>
     </qresource>
     <qresource prefix="/images">
         <file>resourses/images/smiley-face-png-003.png</file>

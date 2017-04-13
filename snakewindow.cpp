@@ -30,7 +30,7 @@ SnakeWindow::SnakeWindow(QWidget *parent) :
     scene->setFocus();
     //Adds background music and loops it with playlist
     QMediaPlaylist *playlist = new QMediaPlaylist();
-    playlist->addMedia(QUrl("qrc:/sounds/resourses/sounds/Chill-house-music-loop-116-bpm.wav"));
+    playlist->addMedia(QUrl("qrc:/sounds/resourses/sounds/sonx.wav"));
     playlist->setPlaybackMode(QMediaPlaylist::Loop);
 
     music = new QMediaPlayer();
@@ -89,6 +89,15 @@ bool SnakeWindow::getCrashed()
 
 void SnakeWindow::on_exit_Game_Btn_clicked()
 {
+    gameIsPaused = !gameIsPaused;
+
+    //pauses and pauses game timer and background music
+    if(gameIsPaused){
+        disconnect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
+        disconnect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
+        music->setMuted(true);
+    }
+
     QMessageBox quitMsgBox;
     quitMsgBox.setText("Do you really want to quit?");
     quitMsgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
@@ -100,6 +109,10 @@ void SnakeWindow::on_exit_Game_Btn_clicked()
         break;
     case QMessageBox::No:
         quitMsgBox.close();
+        connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
+        connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
+        gameStart->start(200);
+        music->setMuted(false);
         break;
     }
 
