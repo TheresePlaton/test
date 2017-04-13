@@ -17,7 +17,7 @@
 
 #include <QObject>
 #include "bodyofsnake.h"
-#include "powerup.h"
+//#include "powerup.h"
 
 class Snake : public QObject, public QGraphicsPixmapItem
 {

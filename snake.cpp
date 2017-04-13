@@ -4,7 +4,7 @@
 #include <QDebug>
 #include <QObject>
 #include <typeinfo>
-#include <powerup.h>
+//#include <powerup.h>
 #include "gameover.h"
 #include "ui_gameover.h"
 #include <QMediaPlayer>

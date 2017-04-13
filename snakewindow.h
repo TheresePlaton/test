@@ -9,7 +9,7 @@
 #include <QColor>
 #include <QBrush>
 #include "snake.h"
-#include "powerup.h"
+//#include "powerup.h"
 #include "ui_gameover.h"
 #include "gameover.h"
 
