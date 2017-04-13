@@ -11,5 +11,11 @@
         <file>resourses/images/headLeft.png</file>
         <file>resourses/images/headUp.png</file>
         <file>resourses/images/body_ball.png</file>
+        <file>resourses/images/glowing_green/gg1.png</file>
+        <file>resourses/images/glowing_green/gg2.png</file>
+        <file>resourses/images/glowing_green/gg3.png</file>
+        <file>resourses/images/glowing_green/gg4.png</file>
+        <file>resourses/images/glowing_green/gg5.png</file>
+        <file>resourses/images/glowing_green/gg6.png</file>
     </qresource>
 </RCC>

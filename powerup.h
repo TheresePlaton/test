@@ -4,6 +4,7 @@
 #include <QGraphicsRectItem>
 #include <QBrush>
 #include <QGraphicsPixmapItem>
+#include <QTimer>
 
 class PowerUp : public QGraphicsPixmapItem
 {
@@ -22,6 +23,7 @@ private:
     int randomY;
     int restX;
     int restY;
+    QTimer *pixMapTimer;
 
 };
 

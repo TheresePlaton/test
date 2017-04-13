@@ -20,7 +20,7 @@ PowerUp::PowerUp(QGraphicsItem *parent)
 
     restX = _rx;
     restY = _ry;
-
+    powerUpPixMap = new QPixmap();
     setPixmap(QPixmap(":/images/resourses/images/smiley-face-png-003.png"));
     setPos(restX, restY);
 
@@ -44,4 +44,9 @@ int PowerUp::getX()
 int PowerUp::getY()
 {
     return restY;
+}
+
+void PowerUp::changePixmap()
+{
+
 }
