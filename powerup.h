@@ -5,9 +5,11 @@
 #include <QBrush>
 #include <QGraphicsPixmapItem>
 #include <QTimer>
+#include <QList>
 
-class PowerUp : public QGraphicsPixmapItem
+class PowerUp : public QObject, public QGraphicsPixmapItem
 {
+    Q_OBJECT
 public:
     PowerUp(QGraphicsItem *parent=NULL);
 
@@ -16,6 +18,8 @@ public:
 
     int getX();
     int getY();
+public slots:
+    void animationCounter();
 
 private:
     bool consumed = false;
@@ -23,7 +27,11 @@ private:
     int randomY;
     int restX;
     int restY;
-    QTimer *pixMapTimer;
+    QTimer *pixMapTimer = new QTimer();
+    QPixmap *powerUpPixMap;
+    QList<QPixmap*> powerUpImageList;
+    int animCounter=0;
+    int increment = 0;
 
 };
 

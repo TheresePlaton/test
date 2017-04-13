@@ -24,7 +24,7 @@ SnakeWindow::SnakeWindow(QWidget *parent) :
     //sets UI form and scene
     ui->setupUi(this);
     scene = new QGraphicsScene(0,0,681,451);
-    scene->setBackgroundBrush(QBrush(QImage(":/images/resourses/images/background.jpg")));
+    scene->setBackgroundBrush(QBrush(QImage(":/images/resourses/images/background1.png")));
     ui->graphicsView_snake->setScene(scene);
 
     scene->setFocus();

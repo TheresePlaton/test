@@ -3,6 +3,7 @@
 #include <QtGlobal>
 #include <QTime>
 #include <QDebug>
+#include <QTimer>
 
 PowerUp::PowerUp(QGraphicsItem *parent)
 {
@@ -20,9 +21,20 @@ PowerUp::PowerUp(QGraphicsItem *parent)
 
     restX = _rx;
     restY = _ry;
-    powerUpPixMap = new QPixmap();
-    setPixmap(QPixmap(":/images/resourses/images/smiley-face-png-003.png"));
-    setPos(restX, restY);
+
+
+    powerUpImageList.append(new QPixmap(":/images/resourses/images/glowing_green/gg1.png"));
+    powerUpImageList.append(new QPixmap(":/images/resourses/images/glowing_green/gg2.png"));
+    powerUpImageList.append(new QPixmap(":/images/resourses/images/glowing_green/gg3.png"));
+    powerUpImageList.append(new QPixmap(":/images/resourses/images/glowing_green/gg4.png"));
+
+    connect(pixMapTimer, SIGNAL(timeout()), this, SLOT(animationCounter()));
+    pixMapTimer->start(250);
+
+
+    powerUpPixMap = powerUpImageList[0];
+    setPixmap(*powerUpPixMap);
+    setPos(restX,restY);
 
 }
 
@@ -46,7 +58,15 @@ int PowerUp::getY()
     return restY;
 }
 
-void PowerUp::changePixmap()
+void PowerUp::animationCounter()
 {
 
+    if(animCounter>=3) increment = -1;
+    if(animCounter ==0) increment = 1;
+    qDebug()<<animCounter<<"is current counter";
+    animCounter+=increment;
+    powerUpPixMap = powerUpImageList[animCounter];
+    setPixmap(*powerUpPixMap);
 }
+
+
