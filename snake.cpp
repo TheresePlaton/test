@@ -215,6 +215,7 @@ void Snake::move()
                 int choice = qrand() % ((high + 1)-low)+low;
                 qDebug()<<choice<<"is random choise of powerup";
 
+                //sets random new power up
                 Consumable *p = setPowerUp(choice);
 
                 scene.addItem(p);
