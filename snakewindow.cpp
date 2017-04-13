@@ -16,6 +16,8 @@
 #include <QImage>
 #include <QMediaPlaylist>
 #include <QMessageBox>
+#include "Consumable.h"
+#include "Green_powerup.h"
 
 SnakeWindow::SnakeWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -153,7 +155,7 @@ void SnakeWindow::on_start_Game_Btn_clicked()
 
     //adding a power-up
 
-    PowerUp *pUp = new PowerUp();
+    Consumable *pUp = new Green_Powerup();
     scene->addItem(pUp);
 
 

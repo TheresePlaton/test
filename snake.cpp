@@ -9,6 +9,8 @@
 #include "ui_gameover.h"
 #include <QMediaPlayer>
 #include <QPainter>
+#include "Green_powerup.h"
+#include <QGraphicsItem>
 
 
 
@@ -168,8 +170,15 @@ void Snake::move()
     //qDebug()<<"Type of snake: "<<typeid(*this).name();
     for(int i=0, n =list.size(); i<n; i++)
     {
-        //qDebug() << typeid(*list[i]).name();
-        if(typeid(*list[i])==typeid(PowerUp))
+        qDebug() << typeid(list[i]).name();
+
+        /** Will return nullptr if cannot cast to consumable*
+         * Otherwise ptr to the consumable
+         * Allows for the if test below
+         * */
+        Consumable* p =  dynamic_cast<Consumable*>(list[i]);
+
+        if(p)
         {
             /**
              * @brief checks whether snake collides with power up
@@ -177,7 +186,8 @@ void Snake::move()
              * Removal only occurs when consumed sets to true due
              * to first collison.
              */
-            PowerUp* p = (PowerUp*) list[i];
+
+            //Consumes the consumable, if not trap -> grows. If trap, shrinks
             if(p->getConsumed() == false && p->getX()==this->x() &&p->getY()==this->y() ) {
 
                 powerUpSound = new QMediaPlayer();
@@ -188,10 +198,10 @@ void Snake::move()
                 qDebug()<<p->getY();
                 gameScore=gameScore+10;
 
-                p->setConsumed(true);
-                extendSnake();
-                delete p;
-                PowerUp *p = new PowerUp();
+                p->isEaten(*this);
+
+                Consumable *p = new Green_Powerup();
+
                 scene.addItem(p);
                 continue;
             }
