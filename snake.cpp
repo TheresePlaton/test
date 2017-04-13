@@ -4,7 +4,6 @@
 #include <QDebug>
 #include <QObject>
 #include <typeinfo>
-//#include <powerup.h>
 #include "gameover.h"
 #include "ui_gameover.h"
 #include <QMediaPlayer>
@@ -24,19 +23,28 @@ Snake::Snake(QGraphicsScene &scene, QObject *parent) :
     snakeHeadImage = new QPixmap(":/images/resourses/images/head.png");
     setPixmap(*snakeHeadImage);
     setPos(0,0);
-    /*
-    setRect(0,0,20,20);
-    QBrush brush;
-    //sets color and solid for head of snake
-    brush.setStyle(Qt::SolidPattern);
-    brush.setColor(Qt::green);
-    setBrush(brush);*/
+
 
     //set snake head rect focusable
     setFlag(QGraphicsItem::ItemIsFocusable, true);
 
     //sets default direction
     movingDirection = Stop;
+
+}
+
+Consumable* Snake::setPowerUp(int choice)
+{
+    Consumable *consumablePowerUp;
+    if(choice==1)
+    {
+        consumablePowerUp = new Green_Powerup();
+    }
+    if(choice==2)
+    {
+        consumablePowerUp = new Red_powerup();
+    }
+    return consumablePowerUp;
 
 }
 
@@ -200,7 +208,14 @@ void Snake::move()
 
                 p->isEaten(*this);
 
-                Consumable *p = new Green_Powerup();
+                QTime time = QTime::currentTime();
+                qsrand((uint)time.msec());
+                int high = 2;
+                int low = 1;
+                int choice = qrand() % ((high + 1)-low)+low;
+                qDebug()<<choice<<"is random choise of powerup";
+
+                Consumable *p = setPowerUp(choice);
 
                 scene.addItem(p);
                 continue;

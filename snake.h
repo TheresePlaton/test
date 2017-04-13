@@ -9,6 +9,10 @@
 #include <QTimer>
 #include <QMediaPlayer>
 #include <QGraphicsPixmapItem>
+#include <QTime>
+#include <QtGlobal>
+#include "Green_powerup.h"
+#include "red_powerup.h"
 
 /**
  * Snake class used to created the head of the snake as well as implement
@@ -17,7 +21,6 @@
 
 #include <QObject>
 #include "bodyofsnake.h"
-//#include "powerup.h"
 
 class Snake : public QObject, public QGraphicsPixmapItem
 {
@@ -34,7 +37,7 @@ public:
     };
     Snake(QGraphicsScene &scene, QObject *parent = 0);
 
-
+    Consumable* setPowerUp(int choice);
 
     //direction setter
     void setDirection(Direction dir);

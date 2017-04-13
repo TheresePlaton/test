@@ -31,8 +31,9 @@ SOURCES += main.cpp\
     gameover.cpp \
     bodyofsnake.cpp \
     snake.cpp \
-    consumable.cpp \
-    Green_powerup.cpp
+    Green_powerup.cpp \
+    red_powerup.cpp \
+    Consumable.cpp
 
 HEADERS  += mainwindow.h \
     snakewindow.h \
@@ -41,7 +42,8 @@ HEADERS  += mainwindow.h \
     bodyofsnake.h \
     snake.h \
     Consumable.h \
-    Green_powerup.h
+    Green_powerup.h \
+    red_powerup.h
 
 FORMS    += mainwindow.ui \
     snakewindow.ui \

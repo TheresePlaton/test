@@ -1,5 +1,5 @@
 #include "Green_powerup.h"
-
+#include "snake.h"
 
 Green_Powerup::Green_Powerup()
 {

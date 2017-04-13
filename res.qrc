@@ -15,5 +15,13 @@
         <file>resourses/images/glowing_green/gg3.png</file>
         <file>resourses/images/glowing_green/gg4.png</file>
         <file>resourses/images/background1.png</file>
+        <file>resourses/images/glowing_red/rp1.png</file>
+        <file>resourses/images/glowing_red/rp2.png</file>
+        <file>resourses/images/glowing_red/rp3.png</file>
+        <file>resourses/images/glowing_red/rp4.png</file>
+        <file>resourses/images/glowing_red/rp5.png</file>
+        <file>resourses/images/glowing_red/rp6.png</file>
+        <file>resourses/images/glowing_red/rp7.png</file>
+        <file>resourses/images/glowing_red/rp8.png</file>
     </qresource>
 </RCC>

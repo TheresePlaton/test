@@ -5,9 +5,10 @@
 #include <QGraphicsRectItem>
 #include <QBrush>
 #include <QTimer>
-#include "snake.h"
+//#include "snake.h"
 #include <QGraphicsPixmapItem>
 
+class Snake;
 
 class Consumable : public QObject, public QGraphicsPixmapItem
 {
