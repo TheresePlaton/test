@@ -12,7 +12,7 @@ public:
     void drawMap();
 private:
 //Wall_brick* map[17][11];
-//const char aMap[17][11];
+const char aMap[17][11];
 };
 
 #endif // MAP_H
