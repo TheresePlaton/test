@@ -94,9 +94,9 @@ void Snake::setDirection(Direction dir)
     }
 }
 
-void Snake::extendSnake()
+void Snake::extendSnake(QString pathToBodyImage)
 {
-    BodyOfSnake *ext = new BodyOfSnake();
+    BodyOfSnake *ext = new BodyOfSnake(pathToBodyImage);
     bodies.prepend(ext);
     ext->setPos(this->x(),this->y());
     scene.addItem(ext);
@@ -169,9 +169,6 @@ void Snake::move()
     if(this->movingDirection!=Stop){
         bodies.last()->setPos(lastPosition);
     }
-
-
-
 
     //Implements collision test.
     QList<QGraphicsItem*> list = collidingItems();

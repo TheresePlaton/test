@@ -46,7 +46,7 @@ void Green_Powerup::setConsumed(bool value)
 void Green_Powerup::isEaten(Snake &snake)
 {
     consumed=true;
-    snake.extendSnake();
+    snake.extendSnake(":/images/resourses/images/glowing_green/gg1.png");
     delete this;
 
 }

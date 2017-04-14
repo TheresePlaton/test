@@ -19,11 +19,11 @@ BodyOfSnake::BodyOfSnake(int x, int y)
     setPixmap(*bodyImage);
     setPos(x,y);
 
-//    setRect(x,y,20,20);
+}
 
-//    //graphical properties of rect
-//    QBrush brush;
-//    brush.setStyle(Qt::SolidPattern);
-//    brush.setColor(Qt::blue);
-//    setBrush(brush);
+BodyOfSnake::BodyOfSnake(QString pixMapPath)
+{
+    bodyImage = new QPixmap(pixMapPath);
+    setPixmap(*bodyImage);
+    setPos(0,0);
 }

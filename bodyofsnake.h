@@ -13,12 +13,18 @@ class BodyOfSnake : public QGraphicsPixmapItem
 
 public:
     /**
-     * @brief BodyOfSnake this constructor creates a rectangle that can be used as a body part/parts
+     * @brief BodyOfSnake this constructor creates a body part
      * @param parent
      */
     BodyOfSnake(QGraphicsItem *parent = NULL);
 
     BodyOfSnake(int x, int y);
+
+    BodyOfSnake(QString pixMapPath);
+
+
+
+
 private:
     QPixmap *bodyImage;
 };

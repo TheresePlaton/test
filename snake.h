@@ -43,7 +43,7 @@ public:
     void setDirection(Direction dir);
 
     //snake extension on power-up
-    void extendSnake();
+    void extendSnake(QString pathToBodyImage);
     /**
      * @brief appendBodies adds body object to the bodies QList
      * @param abody

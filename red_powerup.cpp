@@ -50,7 +50,7 @@ void Red_powerup::setConsumed(bool value)
 void Red_powerup::isEaten(Snake &snake)
 {
     consumed=true;
-    snake.extendSnake();
+    snake.extendSnake(":/images/resourses/images/glowing_red/rp1.png");
     delete this;
 }
 
