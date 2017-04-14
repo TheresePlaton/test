@@ -14,11 +14,17 @@ class Green_Powerup: public Consumable
     Q_OBJECT
 public:
     Green_Powerup();
+    //gets the value of consumed bool for collistion testing purposes
     bool getConsumed() const;
+
+    //sets the value of consumed bool for collistion testing purposes
     void setConsumed(bool value);
+
+    //set value of consumed. extends snake with powerup pixmap. deletes
+    //current power-up
     void isEaten(Snake &snake);
 
-
+    //position getters
     int getX() const override;
     int getY() const override;
 private:
