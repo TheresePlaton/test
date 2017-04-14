@@ -154,7 +154,6 @@ void SnakeWindow::on_start_Game_Btn_clicked()
     scene->installEventFilter(this);
 
     //adding a power-up
-
     Consumable *pUp = new Green_Powerup();
     scene->addItem(pUp);
 

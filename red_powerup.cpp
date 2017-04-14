@@ -47,6 +47,7 @@ void Red_powerup::setConsumed(bool value)
     consumed = value;
 }
 
+
 void Red_powerup::isEaten(Snake &snake)
 {
     consumed=true;
