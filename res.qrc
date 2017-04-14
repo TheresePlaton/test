@@ -23,5 +23,6 @@
         <file>resourses/images/glowing_red/rp6.png</file>
         <file>resourses/images/glowing_red/rp7.png</file>
         <file>resourses/images/glowing_red/rp8.png</file>
+        <file>resourses/images/brick.png</file>
     </qresource>
 </RCC>

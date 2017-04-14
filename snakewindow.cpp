@@ -18,6 +18,7 @@
 #include <QMessageBox>
 #include "Consumable.h"
 #include "Green_powerup.h"
+#include "wall_brick.h"
 
 SnakeWindow::SnakeWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -157,6 +158,9 @@ void SnakeWindow::on_start_Game_Btn_clicked()
     Consumable *pUp = new Green_Powerup();
     scene->addItem(pUp);
 
+    //test wall
+    Wall_brick *brick = new Wall_brick();
+    scene->addItem(brick);
 
     body = new BodyOfSnake();
     body->setPos(0,20);
