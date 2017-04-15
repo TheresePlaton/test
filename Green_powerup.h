@@ -9,6 +9,9 @@
 #include <QDebug>
 #include <QtGlobal>
 
+/**
+ * @brief The Green_Powerup class subclass of Consumable
+ */
 class Green_Powerup: public Consumable
 {
     Q_OBJECT

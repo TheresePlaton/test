@@ -193,7 +193,7 @@ void SnakeWindow::on_start_Game_Btn_clicked()
     shead->setFocus();
     scene->installEventFilter(this);
 
-
+    level.drawMap(lvl);
     for(int i=0; i<11; ++i){
         for (int j = 0; j < 17; ++j) {
             void* ptr = level.getMap()[i][j];

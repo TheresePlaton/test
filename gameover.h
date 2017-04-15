@@ -11,7 +11,9 @@
 namespace Ui {
 class GameOver;
 }
-
+/**
+ * @brief The GameOver class class that displays game over screen
+ */
 class GameOver : public QDialog
 {
     Q_OBJECT

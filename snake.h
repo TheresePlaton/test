@@ -77,12 +77,27 @@ public:
      */
     void move();
 
+    /**
+     * @brief getSnakeLength returns snake length based on number of body parts
+     * @return
+     */
     int getSnakeLength();
 
+    /**
+     * @brief getDir direction getter for snake
+     */
     void getDir();
 
+    /**
+     * @brief getHead_in_tail sets true if snake head crashes in it's tail
+     * @return
+     */
     bool getHead_in_tail();
 
+    /**
+     * @brief getGameScore returns game score based on number of collected power ups
+     * @return
+     */
     int getGameScore();
 
 

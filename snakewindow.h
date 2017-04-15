@@ -73,6 +73,7 @@ private:
     bool gameIsPaused=false;
     Consumable *pUp;
     Map level;
+    int lvl=0;
 };
 
 #endif // SNAKEWINDOW_H

@@ -9,6 +9,9 @@
 #include <QDebug>
 #include <QtGlobal>
 
+/**
+ * @brief The Red_powerup class is subclass of consumable class
+ */
 class Red_powerup: public Consumable
 {
     Q_OBJECT
