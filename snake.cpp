@@ -61,7 +61,7 @@ QRectF Snake::testRect() const
 
 bool Snake::collidesWithPwrUp(Consumable *p)
 {
-
+    //tests collision with all body parts
     for(int i=0; i<bodies.length(); i++)
     {
         if(bodies[i]->testRect().intersects(p->testRect()))
@@ -70,6 +70,7 @@ bool Snake::collidesWithPwrUp(Consumable *p)
         }
     }
 
+    //tests collision with head
     if(this->testRect().intersects(p->testRect()))
     {
         return true;

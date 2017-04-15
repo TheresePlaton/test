@@ -79,6 +79,7 @@ void SnakeWindow::gameLoop()
     shead->move();
     shead->getSnakeLength();
 
+    //creates new power up upong power up consumption
     if(pUp->getConsumed())
     {
         QTime time = QTime::currentTime();
@@ -89,6 +90,8 @@ void SnakeWindow::gameLoop()
         qDebug()<<choice<<"is random choise of powerup";
         delete pUp;
         pUp = shead->setPowerUp(choice);
+        //if new powerup crashes with either head, tail or wall
+        //creates a new one and tests it again
         while(shead->collidesWithPwrUp(pUp)||powerUpIntersects(pUp,&level))
         {
            pUp = shead->setPowerUp(choice);
@@ -203,10 +206,7 @@ void SnakeWindow::on_start_Game_Btn_clicked()
     body->setPos(40,40);
     scene->addItem(body);
     shead->appendBodies(*body);
-    //starts movement of snake
-    //shead->snakeIsMoving();
 
-    //adding a power-up
     pUp = new Green_Powerup();
 
     while(powerUpIntersects(pUp, &level))
