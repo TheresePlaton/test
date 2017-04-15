@@ -7,12 +7,30 @@
 class Map
 {
 public:
+
+    using mapArray = std::array<std::array<Wall_brick*,17>,11>;
+
     Map();
 
     void drawMap();
+
+    mapArray& getMap();
+
 private:
-//Wall_brick* map[17][11];
-const char aMap[17][11];
+mapArray map;
+
+const char aMap[11][17] =
+{{'w','w','w','w','w','w','w','w','w','w','w','w','w','w','w','w','w'},
+ {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
+ {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
+ {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
+ {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
+ {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
+ {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
+ {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
+ {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
+ {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
+ {'w','w','w','w','w','w','w','w','w','w','w','w','w','w','w','w','w'}};
 };
 
 #endif // MAP_H

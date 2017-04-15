@@ -22,7 +22,7 @@ Snake::Snake(QGraphicsScene &scene, QObject *parent) :
 {
     snakeHeadImage = new QPixmap(":/images/resourses/images/head.png");
     setPixmap(*snakeHeadImage);
-    setPos(0,0);
+    setPos(60,40);
 
 
     //set snake head rect focusable
@@ -222,7 +222,7 @@ void Snake::move()
         }
         //tests whether or not head crashed in tail
         if(this->x()==list[i]->x()&&this->y()==list[i]->y())
-        {
+        {            
             head_in_tail=true;
             qDebug()<<"head crashed in tail";
             qDebug()<<head_in_tail;

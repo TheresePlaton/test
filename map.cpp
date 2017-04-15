@@ -3,37 +3,26 @@
 
 Map::Map()
 {
-    Wall_brick* map[17][11]={};
-
-    const char aMap[][17][11] =
-    {{'w','w','w','w','w','w','w','w','w','w','w','w','w','w','w','w','w'},
-     {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
-     {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
-     {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
-     {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
-     {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
-     {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
-     {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
-     {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
-     {'w','e','e','e','e','e','e','e','e','e','e','e','e','e','e','e','w'},
-     {'w','w','w','w','w','w','w','w','w','w','w','w','w','w','w','w','w'}};
-
-
-
+    drawMap();
 }
 
 void Map::drawMap()
 {
 
-    for(int i=0; i<17; ++i)
+    for(int i=0; i<11; ++i)
     {
-        for(int j=0; j<11; ++j)
+        for(int j=0; j<17; ++j)
         {
-            switch(this->aMap){
-            case 'e':
-            case 'w': this->map[i][j]=new Wall_brick((i*40),(j*40)); break;
+            switch(this->aMap[i][j]){
 
+            case 'w': this->map[i][j]=new Wall_brick((j*40),(i*40)); break;
+            default: this->map[i][j]=nullptr; break;
             }
         }
     }
+}
+
+Map::mapArray &Map::getMap()
+{
+    return map;
 }

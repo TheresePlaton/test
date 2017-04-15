@@ -19,6 +19,7 @@
 #include "Consumable.h"
 #include "Green_powerup.h"
 #include "wall_brick.h"
+#include "map.h"
 
 SnakeWindow::SnakeWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -158,12 +159,22 @@ void SnakeWindow::on_start_Game_Btn_clicked()
     Consumable *pUp = new Green_Powerup();
     scene->addItem(pUp);
 
+
     //test wall
-    Wall_brick *brick = new Wall_brick();
-    scene->addItem(brick);
+//    Wall_brick *brick = new Wall_brick();
+//    scene->addItem(brick);
+    Map level;
+    for(int i=0; i<11; ++i){
+        for (int j = 0; j < 17; ++j) {
+           void* ptr = level.getMap()[i][j];
+           if(ptr == nullptr) continue;
+           scene->addItem(level.getMap()[i][j]);
+        }
+    }
+
 
     body = new BodyOfSnake();
-    body->setPos(0,20);
+    body->setPos(40,40);
     scene->addItem(body);
     shead->appendBodies(*body);
     //starts movement of snake
