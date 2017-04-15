@@ -22,7 +22,10 @@ class QKeyEvent;
 namespace Ui {
 class SnakeWindow;
 }
-
+/**
+ * @brief The SnakeWindow class is main game class that creates game scene and
+ * draws all objects of the game on it.
+ */
 class SnakeWindow : public QMainWindow
 {
     Q_OBJECT
@@ -35,7 +38,15 @@ public:
 
 
 public slots:
+    /**
+     * @brief gameLoop runs logic of the snake.cpp class and creates new power ups
+     * when existing is eaten
+     */
     void gameLoop();
+    /**
+     * @brief getCrashed returns true if snake crashes, is used for game over logic
+     * @return
+     */
     bool getCrashed();
 
 private slots:

@@ -16,7 +16,7 @@
 
 /**
  * Snake class used to created the head of the snake as well as implement
- * movement methods.
+ * movement methods and other snake related logic
  */
 
 #include <QObject>
@@ -35,12 +35,30 @@ public:
         Right,
         Stop
     };
+    /**
+     * @brief testRect replacement lofic for native boundingRect()
+     * for collision testing
+     * @return
+     */
     QRectF testRect() const;
 
+    /**
+     * @brief collidesWithPwrUp test whether or not new power up collides with
+     * either head or body of snake on creation. If true, tries to create a new
+     * power up that is not located on existing snake parts.
+     * @param p
+     * @return
+     */
     bool collidesWithPwrUp(Consumable *p);
+
 
     Snake(QGraphicsScene &scene, QObject *parent = 0);
 
+    /**
+     * @brief setPowerUp "rolls" for new power up
+     * @param choice
+     * @return
+     */
     Consumable* setPowerUp(int choice);
 
     //direction setter

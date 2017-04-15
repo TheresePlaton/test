@@ -5,7 +5,9 @@ Map::Map()
 {
     drawMap();
 }
-
+/**
+ * @brief Map::drawMap iterates through level outline and draws wall objects
+ */
 void Map::drawMap()
 {
 
