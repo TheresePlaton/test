@@ -19,8 +19,8 @@
      <rect>
       <x>50</x>
       <y>110</y>
-      <width>681</width>
-      <height>451</height>
+      <width>680</width>
+      <height>440</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -31,8 +31,8 @@
     </property>
     <property name="maximumSize">
      <size>
-      <width>681</width>
-      <height>451</height>
+      <width>680</width>
+      <height>440</height>
      </size>
     </property>
     <property name="mouseTracking">
@@ -147,7 +147,7 @@
      <x>0</x>
      <y>0</y>
      <width>895</width>
-     <height>20</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

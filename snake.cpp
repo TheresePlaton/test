@@ -177,6 +177,7 @@ void Snake::move()
     {
         qDebug() << typeid(list[i]).name();
 
+
         /** Will return nullptr if cannot cast to consumable*
          * Otherwise ptr to the consumable
          * Allows for the if test below
@@ -192,8 +193,10 @@ void Snake::move()
              * to first collison.
              */
 
+            if(p->getConsumed() == false && p->boundingRect().intersects(this->boundingRect()))
+
             //Consumes the consumable, if not trap -> grows. If trap, shrinks
-            if(p->getConsumed() == false && p->getX()==this->x() &&p->getY()==this->y() ) {
+            /*if(p->getConsumed() == false && p->getX()==this->x() &&p->getY()==this->y() )*/ {
 
                 powerUpSound = new QMediaPlayer();
                 powerUpSound->setMedia(QUrl("qrc:/sounds/resourses/sounds/157217__adamweeden__video-game-gain-xp-level-up.flac"));
@@ -221,8 +224,9 @@ void Snake::move()
 
         }
         //tests whether or not head crashed in tail
-        if(this->x()==list[i]->x()&&this->y()==list[i]->y())
-        {            
+        //if(this->x()==list[i]->x()&&this->y()==list[i]->y())
+        if(this->boundingRect().intersects(list[i]->boundingRect()))
+        {
             head_in_tail=true;
             qDebug()<<"head crashed in tail";
             qDebug()<<head_in_tail;
