@@ -25,7 +25,6 @@ Snake::Snake(QGraphicsScene &scene, QObject *parent) :
     setPixmap(*snakeHeadImage);
     setPos(60,40);
 
-
     //set snake head rect focusable
     setFlag(QGraphicsItem::ItemIsFocusable, true);
 
@@ -60,10 +59,28 @@ QRectF Snake::testRect() const
     return QRectF(x,y,w,h);
 }
 
+bool Snake::collidesWithPwrUp(Consumable *p)
+{
+
+    for(int i=0; i<bodies.length(); i++)
+    {
+        if(bodies[i]->testRect().intersects(p->testRect()))
+        {
+            return true;
+        }
+    }
+
+    if(this->testRect().intersects(p->testRect()))
+    {
+        return true;
+    }
+    return false;
+}
+
 /**
- * @brief Snake::setDirection direction check and set according to basic snake rools
- * @param dir
- */
+     * @brief Snake::setDirection direction check and set according to basic snake rools
+     * @param dir
+     */
 void Snake::setDirection(Direction dir)
 {
     switch (dir) {
@@ -140,8 +157,8 @@ int Snake::getGameScore()
 }
 
 /**
- * @brief Snake::move
- */
+     * @brief Snake::move
+     */
 void Snake::move()
 {
 
@@ -189,25 +206,22 @@ void Snake::move()
 
 
         /** Will return nullptr if cannot cast to consumable*
-         * Otherwise ptr to the consumable
-         * Allows for the if test below
-         * */
+             * Otherwise ptr to the consumable
+             * Allows for the if test below
+             * */
         Consumable* p =  dynamic_cast<Consumable*>(list[i]);
 
         if(p)
         {
             /**
-             * @brief checks whether snake collides with power up
-             * and removes power up if collision occures.
-             * Removal only occurs when consumed sets to true due
-             * to first collison.
-             */
+                 * @brief checks whether snake collides with power up
+                 * and removes power up if collision occures.
+                 * Removal only occurs when consumed sets to true due
+                 * to first collison.
+                 */
 
             if(p->getConsumed() == false && p->boundingRect().intersects(this->boundingRect()))
-
-            //Consumes the consumable, if not trap -> grows. If trap, shrinks
-            /*if(p->getConsumed() == false && p->getX()==this->x() &&p->getY()==this->y() )*/ {
-
+            {
                 powerUpSound = new QMediaPlayer();
                 powerUpSound->setMedia(QUrl("qrc:/sounds/resourses/sounds/157217__adamweeden__video-game-gain-xp-level-up.flac"));
                 powerUpSound->play();
@@ -216,25 +230,14 @@ void Snake::move()
                 qDebug()<<p->getY();
                 gameScore=gameScore+10;
 
+                scene.removeItem(p);
                 p->isEaten(*this);
+                qDebug()<<(int*)p;
 
-                QTime time = QTime::currentTime();
-                qsrand((uint)time.msec());
-                int high = 2;
-                int low = 1;
-                int choice = qrand() % ((high + 1)-low)+low;
-                qDebug()<<choice<<"is random choise of powerup";
-
-                //sets random new power up
-                Consumable *p = setPowerUp(choice);
-
-                scene.addItem(p);
                 continue;
             }
-
         }
-        //tests whether or not head crashed in tail
-        //if(this->x()==list[i]->x()&&this->y()==list[i]->y())
+
         if(this->boundingRect().intersects(list[i]->boundingRect()))
         {
             head_in_tail=true;

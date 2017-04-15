@@ -8,6 +8,8 @@
 #include <QTimer>
 #include <QColor>
 #include <QBrush>
+#include <QtGlobal>
+#include <QTime>
 #include "snake.h"
 #include "ui_gameover.h"
 #include "gameover.h"
@@ -58,6 +60,8 @@ private:
     bool isDead = false;
     QMediaPlayer * music;
     bool gameIsPaused=false;
+    Consumable *pUp;
+    Map level;
 };
 
 #endif // SNAKEWINDOW_H

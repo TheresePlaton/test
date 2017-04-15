@@ -79,6 +79,23 @@ void SnakeWindow::gameLoop()
     shead->move();
     shead->getSnakeLength();
 
+    if(pUp->getConsumed())
+    {
+        QTime time = QTime::currentTime();
+        qsrand((uint)time.msec());
+        int high = 2;
+        int low = 1;
+        int choice = qrand() % ((high + 1)-low)+low;
+        qDebug()<<choice<<"is random choise of powerup";
+        delete pUp;
+        pUp = shead->setPowerUp(choice);
+        while(shead->collidesWithPwrUp(pUp)||powerUpIntersects(pUp,&level))
+        {
+           pUp = shead->setPowerUp(choice);
+        }
+        scene->addItem(pUp);
+    }
+
     //connecting ui progress bar to a score value
     int score = shead->getGameScore();
     this->ui->progress_bar_level->setTextVisible(false);
@@ -173,7 +190,7 @@ void SnakeWindow::on_start_Game_Btn_clicked()
     shead->setFocus();
     scene->installEventFilter(this);
 
-    Map level;
+
     for(int i=0; i<11; ++i){
         for (int j = 0; j < 17; ++j) {
             void* ptr = level.getMap()[i][j];
@@ -190,7 +207,7 @@ void SnakeWindow::on_start_Game_Btn_clicked()
     //shead->snakeIsMoving();
 
     //adding a power-up
-    Consumable *pUp = new Green_Powerup();
+    pUp = new Green_Powerup();
 
     while(powerUpIntersects(pUp, &level))
     {

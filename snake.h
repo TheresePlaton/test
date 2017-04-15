@@ -37,6 +37,8 @@ public:
     };
     QRectF testRect() const;
 
+    bool collidesWithPwrUp(Consumable *p);
+
     Snake(QGraphicsScene &scene, QObject *parent = 0);
 
     Consumable* setPowerUp(int choice);
@@ -83,7 +85,7 @@ private:
     bool head_in_tail = false;
     QMediaPlayer *powerUpSound;
     int gameScore=0;
-
+    Consumable* p;
 
     QPixmap *snakeHeadImage;
 

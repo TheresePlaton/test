@@ -6,8 +6,8 @@ Red_powerup::Red_powerup()
     QTime time = QTime::currentTime();
     qsrand((uint)time.msec());
     //setting random coordinates for new power up
-    int width = 600;
-    int height = 400;
+    int width = 520;
+    int height = 320;
 
     int NX = width / 20;
     int NY = height / 20;
@@ -52,7 +52,7 @@ void Red_powerup::isEaten(Snake &snake)
 {
     consumed=true;
     snake.extendSnake(":/images/resourses/images/glowing_red/rp1.png");
-    delete this;
+
 }
 
 int Red_powerup::getX() const
