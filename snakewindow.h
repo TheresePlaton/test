@@ -35,6 +35,7 @@ public:
     ~SnakeWindow();
     void gameOver();
     bool powerUpIntersects(Consumable *cons, Map *map);
+    void startNewLevel();
 
 
 public slots:

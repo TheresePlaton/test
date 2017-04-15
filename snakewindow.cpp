@@ -74,8 +74,57 @@ bool SnakeWindow::powerUpIntersects(Consumable *cons, Map *map)
     return false;
 }
 
+void SnakeWindow::startNewLevel()
+{
+    disconnect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
+    disconnect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
+
+    scene->clear();
+
+    //creating head of the snake item
+    shead = new Snake(*scene, this);
+    scene->addItem(shead);
+
+    //head reacts on key events is true
+    shead->setFocus();
+    scene->installEventFilter(this);
+
+    level.drawMap(lvl);
+    for(int i=0; i<11; ++i){
+        for (int j = 0; j < 17; ++j) {
+            void* ptr = level.getMap()[i][j];
+            if(ptr == nullptr) continue;
+            scene->addItem(level.getMap()[i][j]);
+        }
+    }
+
+    body = new BodyOfSnake();
+    body->setPos(40,40);
+    scene->addItem(body);
+    shead->appendBodies(*body);
+
+    pUp = new Green_Powerup();
+
+    while(powerUpIntersects(pUp, &level))
+    {
+        qDebug()<<"position of pUp is"<<pUp->getX()<<","<<pUp->getY();
+        pUp = new Green_Powerup();
+    }
+    qDebug()<<pUp->x()<<","<<pUp->y()<<"pixmap"<<pUp->pixmap();
+    scene->addItem(pUp);
+
+    connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
+    connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
+    gameStart->start(200);
+}
+
 void SnakeWindow::gameLoop()
 {
+    if(shead->getGameScore()>=300)
+    {
+        lvl=1;
+        startNewLevel();
+    }
     shead->move();
     shead->getSnakeLength();
 
@@ -102,12 +151,15 @@ void SnakeWindow::gameLoop()
     //connecting ui progress bar to a score value
     int score = shead->getGameScore();
     this->ui->progress_bar_level->setTextVisible(false);
-    this->ui->progress_bar_level->setMaximum(500);
+    this->ui->progress_bar_level->setMaximum(300);
     this->ui->progress_bar_level->setValue(score);
 
     //connecting score to ui
     this->ui->label_Score->setText(QString::number(score));
     this->ui->label_Score->setStyleSheet("QLabel{color:blue; "
+                                         "font: bold 18px}");
+    this->ui->label_Level->setText(QString::number(lvl));
+    this->ui->label_Level->setStyleSheet("QLabel{color:blue; "
                                          "font: bold 18px}");
 
     //opens game over screen
