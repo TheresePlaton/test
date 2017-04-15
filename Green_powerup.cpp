@@ -31,6 +31,7 @@ Green_Powerup::Green_Powerup()
     setPixmap(*powerUpPixMap);
     setPos(restX,restY);
 
+
 }
 
 bool Green_Powerup::getConsumed() const
@@ -55,7 +56,7 @@ void Green_Powerup::animationCounter()
 {
     if(animCounter>=3) increment = -1;
         if(animCounter ==0) increment = 1;
-        qDebug()<<animCounter<<"is current counter";
+        //qDebug()<<animCounter<<"is current counter";
         animCounter+=increment;
         powerUpPixMap = powerUpImageList[animCounter];
         setPixmap(*powerUpPixMap);

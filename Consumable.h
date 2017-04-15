@@ -23,6 +23,8 @@ public:
     virtual int getX() const = 0;
     virtual int getY() const = 0;
 
+    QRectF boundingRect() const override;
+
 protected:
     bool consumed = false;
     int randomX;

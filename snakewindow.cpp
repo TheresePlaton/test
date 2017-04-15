@@ -27,7 +27,7 @@ SnakeWindow::SnakeWindow(QWidget *parent) :
 {
     //sets UI form and scene
     ui->setupUi(this);
-    scene = new QGraphicsScene(0,0,681,440);
+    scene = new QGraphicsScene(0,0,680,440);
     scene->setBackgroundBrush(QBrush(QImage(":/images/resourses/images/background1.png")));
     ui->graphicsView_snake->setScene(scene);
 
@@ -54,6 +54,23 @@ void SnakeWindow::gameOver()
     gameOverWindow = new GameOver();
     this->hide();
     gameOverWindow->show();
+}
+
+bool SnakeWindow::powerUpIntersects(Consumable *cons)
+{
+    for(int i=0; i<this->scene->items().count(); i++)
+    {
+        qDebug()<<scene->items().count()<<"objects in scene";
+        QRectF boundingRect = this->scene->items()[i]->boundingRect();
+        qDebug()<<"bounding rect is"<<boundingRect;
+        qDebug()<<"cons rect is"<<cons->boundingRect();
+        if(cons->boundingRect().intersects(boundingRect))
+        {
+            qDebug()<<"Hello";
+            return true;
+        }
+    }
+    return false;
 }
 
 void SnakeWindow::gameLoop()
@@ -155,23 +172,20 @@ void SnakeWindow::on_start_Game_Btn_clicked()
     shead->setFocus();
     scene->installEventFilter(this);
 
-    //adding a power-up
-    Consumable *pUp = new Green_Powerup();
-    scene->addItem(pUp);
+
 
 
     //test wall
-//    Wall_brick *brick = new Wall_brick();
-//    scene->addItem(brick);
+    //    Wall_brick *brick = new Wall_brick();
+    //    scene->addItem(brick);
     Map level;
     for(int i=0; i<11; ++i){
         for (int j = 0; j < 17; ++j) {
-           void* ptr = level.getMap()[i][j];
-           if(ptr == nullptr) continue;
-           scene->addItem(level.getMap()[i][j]);
+            void* ptr = level.getMap()[i][j];
+            if(ptr == nullptr) continue;
+            scene->addItem(level.getMap()[i][j]);
         }
     }
-
 
     body = new BodyOfSnake();
     body->setPos(40,40);
@@ -179,6 +193,17 @@ void SnakeWindow::on_start_Game_Btn_clicked()
     shead->appendBodies(*body);
     //starts movement of snake
     //shead->snakeIsMoving();
+
+    //adding a power-up
+    Consumable *pUp = new Green_Powerup();
+
+    while(powerUpIntersects(pUp)==true)
+    {
+        qDebug()<<"position of pUp is"<<pUp->getX()<<","<<pUp->getY();
+        pUp = new Green_Powerup();
+    }
+    scene->addItem(pUp);
+
     connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
     connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
     gameStart->start(200);

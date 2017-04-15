@@ -28,6 +28,7 @@ public:
     explicit SnakeWindow(QWidget *parent = 0);
     ~SnakeWindow();
     void gameOver();
+    bool powerUpIntersects(Consumable *cons);
 
 
 public slots:

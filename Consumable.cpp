@@ -1,4 +1,5 @@
 #include "Consumable.h"
+#include <QDebug>
 
 
 
@@ -15,5 +16,15 @@ void Consumable::setConsumed(bool value)
 void Consumable::isEaten(Snake &snake)
 {
 
+}
+
+QRectF Consumable::boundingRect() const
+{
+  int x=getX();
+  int y=getY();
+  int w=pixmap().width();
+  int h=pixmap().height();
+
+  return QRectF(x,y,w,h);
 }
 
