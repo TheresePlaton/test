@@ -10,6 +10,7 @@
 #include <QPainter>
 #include "Green_powerup.h"
 #include <QGraphicsItem>
+#include "blue_powerup.h"
 
 
 
@@ -44,6 +45,11 @@ Consumable* Snake::setPowerUp(int choice)
     {
         consumablePowerUp = new Red_powerup();
     }
+    if(choice==3)
+    {
+        consumablePowerUp = new Blue_powerup();
+    }
+
     return consumablePowerUp;
 
 }

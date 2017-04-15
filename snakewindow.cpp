@@ -133,7 +133,7 @@ void SnakeWindow::gameLoop()
     {
         QTime time = QTime::currentTime();
         qsrand((uint)time.msec());
-        int high = 2;
+        int high = 3;
         int low = 1;
         int choice = qrand() % ((high + 1)-low)+low;
         qDebug()<<choice<<"is random choise of powerup";

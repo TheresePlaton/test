@@ -36,7 +36,8 @@ SOURCES += main.cpp\
     red_powerup.cpp \
     Consumable.cpp \
     wall_brick.cpp \
-    map.cpp
+    map.cpp \
+    blue_powerup.cpp
 
 HEADERS  += mainwindow.h \
     snakewindow.h \
@@ -48,7 +49,8 @@ HEADERS  += mainwindow.h \
     Green_powerup.h \
     red_powerup.h \
     wall_brick.h \
-    map.h
+    map.h \
+    blue_powerup.h
 
 FORMS    += mainwindow.ui \
     snakewindow.ui \

@@ -24,5 +24,29 @@
         <file>resourses/images/glowing_red/rp7.png</file>
         <file>resourses/images/glowing_red/rp8.png</file>
         <file>resourses/images/brick.png</file>
+        <file>resourses/images/glowing_blue/blu1.png</file>
+        <file>resourses/images/glowing_blue/blu10.png</file>
+        <file>resourses/images/glowing_blue/blu11.png</file>
+        <file>resourses/images/glowing_blue/blu2.png</file>
+        <file>resourses/images/glowing_blue/blu3.png</file>
+        <file>resourses/images/glowing_blue/blu4.png</file>
+        <file>resourses/images/glowing_blue/blu5.png</file>
+        <file>resourses/images/glowing_blue/blu6.png</file>
+        <file>resourses/images/glowing_blue/blu7.png</file>
+        <file>resourses/images/glowing_blue/blu8.png</file>
+        <file>resourses/images/glowing_blue/blu9.png</file>
+        <file>resourses/images/glowing_blue/blu0.png</file>
+        <file>resourses/images/glowing_green/green0.png</file>
+        <file>resourses/images/glowing_green/green1.png</file>
+        <file>resourses/images/glowing_green/green2.png</file>
+        <file>resourses/images/glowing_green/green3.png</file>
+        <file>resourses/images/glowing_green/green4.png</file>
+        <file>resourses/images/glowing_green/green5.png</file>
+        <file>resourses/images/glowing_green/green6.png</file>
+        <file>resourses/images/glowing_green/green7.png</file>
+        <file>resourses/images/glowing_green/green8.png</file>
+        <file>resourses/images/glowing_green/green9.png</file>
+        <file>resourses/images/glowing_green/green10.png</file>
+        <file>resourses/images/glowing_green/green11.png</file>
     </qresource>
 </RCC>
