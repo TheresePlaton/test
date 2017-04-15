@@ -56,20 +56,21 @@ void SnakeWindow::gameOver()
     gameOverWindow->show();
 }
 
-bool SnakeWindow::powerUpIntersects(Consumable *cons)
+bool SnakeWindow::powerUpIntersects(Consumable *cons, Map *map)
 {
-    for(int i=0; i<this->scene->items().count(); i++)
+    for(int i=0; i<11; i++)
     {
-        qDebug()<<scene->items().count()<<"objects in scene";
-        QRectF boundingRect = this->scene->items()[i]->boundingRect();
-        qDebug()<<"bounding rect is"<<boundingRect;
-        qDebug()<<"cons rect is"<<cons->boundingRect();
-        if(cons->boundingRect().intersects(boundingRect))
+        for(int j=0; j<17; j++)
         {
-            qDebug()<<"Hello";
-            return true;
+            auto* ptr = map->getMap()[i][j];
+            if(!ptr) continue;
+            if(cons->testRect().intersects(ptr->testRect()))
+            {
+                return true;
+            }
         }
     }
+
     return false;
 }
 
@@ -172,12 +173,6 @@ void SnakeWindow::on_start_Game_Btn_clicked()
     shead->setFocus();
     scene->installEventFilter(this);
 
-
-
-
-    //test wall
-    //    Wall_brick *brick = new Wall_brick();
-    //    scene->addItem(brick);
     Map level;
     for(int i=0; i<11; ++i){
         for (int j = 0; j < 17; ++j) {
@@ -197,11 +192,12 @@ void SnakeWindow::on_start_Game_Btn_clicked()
     //adding a power-up
     Consumable *pUp = new Green_Powerup();
 
-    while(powerUpIntersects(pUp)==true)
+    while(powerUpIntersects(pUp, &level))
     {
         qDebug()<<"position of pUp is"<<pUp->getX()<<","<<pUp->getY();
         pUp = new Green_Powerup();
     }
+    qDebug()<<pUp->x()<<","<<pUp->y()<<"pixmap"<<pUp->pixmap();
     scene->addItem(pUp);
 
     connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));

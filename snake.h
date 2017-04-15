@@ -35,6 +35,8 @@ public:
         Right,
         Stop
     };
+    QRectF testRect() const;
+
     Snake(QGraphicsScene &scene, QObject *parent = 0);
 
     Consumable* setPowerUp(int choice);

@@ -16,6 +16,7 @@
 extern SnakeWindow *snakeWindow;
 
 
+
 Snake::Snake(QGraphicsScene &scene, QObject *parent) :
     QObject(parent),
     scene(scene)
@@ -49,6 +50,15 @@ Consumable* Snake::setPowerUp(int choice)
 }
 
 
+QRectF Snake::testRect() const
+{
+    int x=this->x();
+    int y=this->y();
+    int w=pixmap().width();
+    int h=pixmap().height();
+
+    return QRectF(x,y,w,h);
+}
 
 /**
  * @brief Snake::setDirection direction check and set according to basic snake rools
@@ -110,7 +120,7 @@ void Snake::appendBodies(BodyOfSnake &abody)
 
 int Snake::getSnakeLength()
 {
-    qDebug() << bodies.size()+1;
+    //qDebug() << bodies.size()+1;
     return bodies.size()+1;
 }
 

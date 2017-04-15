@@ -22,7 +22,7 @@ public:
 
     BodyOfSnake(QString pixMapPath);
 
-
+    QRectF testRect() const;
 
 
 private:

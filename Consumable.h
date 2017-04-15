@@ -23,7 +23,7 @@ public:
     virtual int getX() const = 0;
     virtual int getY() const = 0;
 
-    QRectF boundingRect() const override;
+    QRectF testRect() const;
 
 protected:
     bool consumed = false;

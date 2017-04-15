@@ -27,3 +27,13 @@ BodyOfSnake::BodyOfSnake(QString pixMapPath)
     setPixmap(*bodyImage);
     setPos(0,0);
 }
+
+QRectF BodyOfSnake::testRect() const
+{
+    int x=this->x();
+    int y=this->y();
+    int w=pixmap().width();
+    int h=pixmap().height();
+
+    return QRectF(x,y,w,h);
+}

@@ -18,13 +18,13 @@ void Consumable::isEaten(Snake &snake)
 
 }
 
-QRectF Consumable::boundingRect() const
+QRectF Consumable::testRect() const
 {
-  int x=getX();
-  int y=getY();
-  int w=pixmap().width();
-  int h=pixmap().height();
+     int x=getX();
+     int y=getY();
+     int w=pixmap().width();
+     int h=pixmap().height();
 
-  return QRectF(x,y,w,h);
+     return QRectF(x,y,w,h);
 }
 

@@ -11,6 +11,7 @@
 #include "snake.h"
 #include "ui_gameover.h"
 #include "gameover.h"
+#include "map.h"
 
 class QGraphicsScene;
 class Snake;
@@ -28,7 +29,7 @@ public:
     explicit SnakeWindow(QWidget *parent = 0);
     ~SnakeWindow();
     void gameOver();
-    bool powerUpIntersects(Consumable *cons);
+    bool powerUpIntersects(Consumable *cons, Map *map);
 
 
 public slots:

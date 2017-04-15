@@ -12,6 +12,9 @@ class Wall_brick:public QObject, public QGraphicsPixmapItem
 public:
     Wall_brick(QGraphicsItem *parent=NULL);
     Wall_brick(int x, int y);
+
+    QRectF testRect() const;
+
 };
 
 #endif // WALL_BRICK_H
