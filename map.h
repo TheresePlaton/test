@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "wall_brick.h"
+#include <array>
 
 /**
  * @brief The Map class creates level outline based on a 17x11 matrix
