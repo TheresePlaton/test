@@ -59,14 +59,9 @@ void GameOver::on_AddToscoreBoard_clicked()
 
     QMap<QString,int> map;
 
-    QString dirpath = QApplication::applicationDirPath();
-    qDebug()<<dirpath;
-    QString saveFilePath = dirpath + "/resourses/files/save.txt";
-    qDebug()<<saveFilePath;
 
-
-
-    QFile file("resourses/files/save.txt");//saveFilePath);
+    QString fPath = QGuiApplication::applicationDirPath() + "/resourses/files/save.txt";
+    QFile file(fPath);//"resourses/files/save.txt");//saveFilePath);
 
 
 
@@ -89,7 +84,7 @@ void GameOver::on_AddToscoreBoard_clicked()
     map.insert(name,score);
 
 
-    QFile file1("resourses/files/save.txt");
+    QFile file1(fPath);
     if(!file1.open(QIODevice::WriteOnly)){
         qDebug()<<"Could not open file write.";
         qDebug()<<file1.errorString();
