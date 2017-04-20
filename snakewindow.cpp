@@ -52,7 +52,7 @@ SnakeWindow::~SnakeWindow()
 void SnakeWindow::gameOver()
 {
     GameOver *gameOverWindow = new GameOver();
-    gameOverWindow->setScore(this->ui->label_Score->text());
+    gameOverWindow->setScore(QString::number(totalScore));
     this->hide();
     gameOverWindow->show();
 }
@@ -121,10 +121,13 @@ void SnakeWindow::startNewLevel()
 
 void SnakeWindow::gameLoop()
 {
+
     if(shead->getGameScore()>=300)
     {
+        totalScore=totalScore+shead->getGameScore();
         lvl=1;
         startNewLevel();
+        qDebug()<<"Total score is: "<<totalScore;
     }
     shead->move();
     shead->getSnakeLength();
@@ -168,6 +171,7 @@ void SnakeWindow::gameLoop()
     {
         disconnect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
         disconnect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
+        totalScore=totalScore+shead->getGameScore();
         music->stop();
         gameOver();
     }

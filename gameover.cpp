@@ -57,7 +57,7 @@ void GameOver::on_AddToscoreBoard_clicked()
 
    QMap<QString,int> map;
 
-   QFile file("C:/Users/Tess/Documents/prosjektoppgave/test/save.txt");
+   QFile file(":/files/save.txt");
    if(!file.open(QIODevice::ReadOnly)){
        qDebug()<<"Could not open file.";
        return;
@@ -75,7 +75,7 @@ void GameOver::on_AddToscoreBoard_clicked()
 
    map.insert(name,score);
 
-   QFile file1("C:/Users/Tess/Documents/prosjektoppgave/test/save.txt");
+   QFile file1(":/files/save.txt");
        if(!file1.open(QIODevice::WriteOnly)){
            qDebug()<<"Could not open file.";
            return;

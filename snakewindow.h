@@ -74,6 +74,7 @@ private:
     Consumable *pUp;
     Map level;
     int lvl=0;
+    int totalScore=0;
 };
 
 #endif // SNAKEWINDOW_H

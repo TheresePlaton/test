@@ -21,7 +21,7 @@ void HighScore::Load(){
 
     QMap<QString,int> map;
 
-    QFile file("C:/Users/Tess/Documents/prosjektoppgave/test/save.txt");
+    QFile file(":/files/save.txt");
     if(!file.open(QIODevice::ReadOnly)){
         qDebug()<<"Could not open file.";
         return;
