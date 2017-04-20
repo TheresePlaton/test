@@ -106,6 +106,7 @@ void SnakeWindow::startNewLevel()
 
     pUp = new Green_Powerup();
 
+    //checks location of power up
     while(powerUpIntersects(pUp, &level))
     {
         qDebug()<<"position of pUp is"<<pUp->getX()<<","<<pUp->getY();
