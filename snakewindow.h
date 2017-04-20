@@ -52,7 +52,6 @@ private:
     Snake *shead;
     BodyOfSnake *body;
     QTimer *gameStart = new QTimer();
-    GameOver *gameOverWindow;
     bool isDead = false;
     QMediaPlayer * music;
     bool gameIsPaused=false;

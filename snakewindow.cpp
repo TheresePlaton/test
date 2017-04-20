@@ -49,7 +49,8 @@ SnakeWindow::~SnakeWindow()
 //opens a new game over screen if head crashes in tail
 void SnakeWindow::gameOver()
 {
-    gameOverWindow = new GameOver();
+    GameOver *gameOverWindow = new GameOver();
+    gameOverWindow->setScore(this->ui->label_Score->text());
     this->hide();
     gameOverWindow->show();
 }

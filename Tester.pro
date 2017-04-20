@@ -52,3 +52,6 @@ FORMS    += mainwindow.ui \
 
 RESOURCES += \
     res.qrc
+
+DISTFILES += \
+    save.txt
