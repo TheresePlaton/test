@@ -49,7 +49,4 @@
         <file>resourses/images/glowing_green/green10.png</file>
         <file>resourses/images/glowing_green/green11.png</file>
     </qresource>
-    <qresource prefix="/files">
-        <file>save.txt</file>
-    </qresource>
 </RCC>

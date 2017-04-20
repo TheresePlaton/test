@@ -2,6 +2,8 @@
 #include "ui_gameover.h"
 #include "snakewindow.h"
 #include "ui_snakewindow.h"
+#include <QFile>
+
 
 
 /**
@@ -40,52 +42,66 @@ void GameOver::on_retry_btn_clicked()
  */
 void GameOver::on_exit_game_Btn_clicked()
 {
-   HighScore *scoreBoard= new HighScore();
-   this->hide();
-   scoreBoard->show();
+    HighScore *scoreBoard= new HighScore();
+    this->hide();
+    scoreBoard->show();
 
 }
 
 void GameOver::on_AddToscoreBoard_clicked()
 {
-   int score= this->ui->score_Label->text().toInt();
-   QString name="";
-   name= this->ui->nameOfPlayer->text();
-   if(name==""){
-       name="anonymous";
-   }
+    int score= this->ui->score_Label->text().toInt();
+    QString name="";
+    name= this->ui->nameOfPlayer->text();
+    if(name==""){
+        name="anonymous";
+    }
 
-   QMap<QString,int> map;
+    QMap<QString,int> map;
 
-   QFile file(":/files/save.txt");
-   if(!file.open(QIODevice::ReadOnly)){
-       qDebug()<<"Could not open file.";
-       return;
-   }
+    QString dirpath = QApplication::applicationDirPath();
+    qDebug()<<dirpath;
+    QString saveFilePath = dirpath + "/resourses/files/save.txt";
+    qDebug()<<saveFilePath;
 
-   foreach(int item, map.values()){
-     qDebug()<<item;
-   }
 
-   QDataStream in(&file);
-   in.setVersion(QDataStream::Qt_5_8);
-   in>>map;
 
-   file.close();
+    QFile file("resourses/files/save.txt");//saveFilePath);
 
-   map.insert(name,score);
 
-   QFile file1(":/files/save.txt");
-       if(!file1.open(QIODevice::WriteOnly)){
-           qDebug()<<"Could not open file.";
-           return;
-       }
 
-       QDataStream out(&file1);
-       out.setVersion(QDataStream::Qt_5_8);
-       out<<map;
-       file.flush();
-       file.close();
+    if(!file.open(QIODevice::ReadOnly)){
+        qDebug()<<"Could not open file hahahahah.";
+        qDebug()<<"Error: " << file.errorString();
+        return;
+    }
+
+    foreach(int item, map.values()){
+        qDebug()<<item;
+    }
+
+    QDataStream in(&file);
+    in.setVersion(QDataStream::Qt_5_8);
+    in>>map;
+
+    file.close();
+
+    map.insert(name,score);
+
+
+    QFile file1("resourses/files/save.txt");
+    if(!file1.open(QIODevice::WriteOnly)){
+        qDebug()<<"Could not open file write.";
+        qDebug()<<file1.errorString();
+        return;
+
+    }
+
+    QDataStream out(&file1);
+    out.setVersion(QDataStream::Qt_5_8);
+    out<<map;
+    file.flush();
+    file.close();
 
 }
 

@@ -21,7 +21,7 @@ void HighScore::Load(){
 
     QMap<QString,int> map;
 
-    QFile file(":/files/save.txt");
+    QFile file("resourses/files/save.txt");
     if(!file.open(QIODevice::ReadOnly)){
         qDebug()<<"Could not open file.";
         return;
