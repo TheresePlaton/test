@@ -63,8 +63,6 @@ void GameOver::on_AddToscoreBoard_clicked()
     QString fPath = QGuiApplication::applicationDirPath() + "/resourses/files/save.txt";
     QFile file(fPath);//"resourses/files/save.txt");//saveFilePath);
 
-
-
     if(!file.open(QIODevice::ReadOnly)){
         qDebug()<<"Could not open file hahahahah.";
         qDebug()<<"Error: " << file.errorString();

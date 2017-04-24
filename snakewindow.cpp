@@ -160,11 +160,8 @@ void SnakeWindow::gameLoop()
 
     //connecting score to ui
     this->ui->label_Score->setText(QString::number(score));
-    this->ui->label_Score->setStyleSheet("QLabel{color:blue; "
-                                         "font: bold 18px}");
+
     this->ui->label_Level->setText(QString::number(lvl));
-    this->ui->label_Level->setStyleSheet("QLabel{color:blue; "
-                                         "font: bold 18px}");
 
     //opens game over screen
     if(isDead)
