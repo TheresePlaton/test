@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QFile>
 #include <QString>
+#include <QStringList>
 #include <QMap>
 #include <QDebug>
 #include "snakewindow.h"
@@ -31,6 +32,7 @@ private slots:
 
 private:
     Ui::HighScore *ui;
+    QStringList list ={"Name", "Score"};
 };
 
 #endif // HIGHSCORE_H

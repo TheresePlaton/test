@@ -36,17 +36,29 @@ void HighScore::Load(){
     in.setVersion(QDataStream::Qt_5_8);
     in>>map;
     file.close();
-    int i =1;
+
     QString name="";
     int score=0;
+
+    ui->tableWidget->setRowCount(10);
+    ui->tableWidget->setColumnCount(2);
+    ui->tableWidget->setHorizontalHeaderLabels(list);
+    ui->tableWidget->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
+    int i=0;
     QMapIterator<QString,int> Iter(map);
-    while(Iter.hasNext()){
+    while(Iter.hasNext() && (i< 10)){
+
         Iter.next();
         name=Iter.key();
         score=Iter.value();
-        ui->list->addItem(QString::number(i)+ ".\t " +name +" " + QString::number(score));
+        QTableWidgetItem* item1 = new QTableWidgetItem();
+        QTableWidgetItem* item2 = new QTableWidgetItem();
+        item1->setText(name);
+        item2->setText(QString::number(score));
+        ui->tableWidget->setItem(i,0,item1);
+        ui->tableWidget->setItem(i,1,item2);
         i++;
-}
+    }
 }
 
 void HighScore::on_btnExit_clicked()

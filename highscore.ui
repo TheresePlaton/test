@@ -52,11 +52,8 @@ background-color:#00aba9;
 QTableWidget{
 background-color:#3d3d3d;
 color:#fff;
-  selection-background-color: #da532c;
-border:solid;
-border-width:3px;
-border-color:#da532c;
 }
+
 QHeaderView::section{
 background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(20, 158, 217, 255), stop:1 rgba(36, 158, 217, 255));
 border:none;
@@ -68,7 +65,6 @@ color:#fff;
 }
 QHeaderView{
 background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(20, 158, 217, 255), stop:1 rgba(36, 158, 217, 255));
-
 border:none;
 border-top-style:solid;
 border-width:1px;
@@ -82,10 +78,6 @@ border:none;
 background-color:#149ED9;
 }
 
-QListWidget{
-background-color:#3d3d3d;
-color:#fff;
-}
 
 QMenu{
 background-color:#3d3d3d;
@@ -150,7 +142,7 @@ width:20px;
        </widget>
       </item>
       <item>
-       <widget class="QListWidget" name="list"/>
+       <widget class="QTableWidget" name="tableWidget"/>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
