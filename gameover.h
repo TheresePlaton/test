@@ -8,7 +8,8 @@
 #include <QObject>
 #include <QFile>
 #include <QString>
-#include <QMap>
+#include <QList>
+#include <scoreuser.h>
 #include <QDebug>
 #include "ui_highscore.h"
 #include "highscore.h"
@@ -30,14 +31,12 @@ public:
     void setScore(QString);
 
 private slots:
-    void on_retry_btn_clicked();
-
-    void on_exit_game_Btn_clicked();
-
     void on_AddToscoreBoard_clicked();
+
 
 private:
     Ui::GameOver *ui;
+    void EnterScoreBoard();
 
 };
 

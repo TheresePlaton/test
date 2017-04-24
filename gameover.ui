@@ -99,8 +99,9 @@ color:#fff;
 }
 
 QPushButton{
+font: 12pt &quot;MS Shell Dlg 2&quot;;
 border-style:solid;
-
+padding:12px;
 background-color:#3d3d3d;
 color:#fff;
 border-radius:7px;
@@ -109,7 +110,7 @@ QPushButton:hover{
 color:#ccc;
 	background-color: qlineargradient(spread:pad, x1:0.517, y1:0, x2:0.517, y2:1, stop:0 rgba(45, 45, 45, 255), stop:0.505682 rgba(45, 45, 45, 255), stop:1 rgba(29, 29, 29, 255));
 	border-color:#2d89ef;
-border-width:2px;
+border-width:0px;
 }
 
 QPushButton:pressed{
@@ -129,7 +130,7 @@ QProgressBar{
 border-radius:0;
 text-align:center;
 color:#fff;
-background-color:transparent;
+background-color:#3d3d3d;;
 border: 2px solid #e3a21a;
 border-radius:7px;
 	font: 75 12pt &quot;Open Sans&quot;;
@@ -141,32 +142,6 @@ background-color:#e3a21a;
 width:20px;
 }</string>
   </property>
-  <widget class="QWidget" name="horizontalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>320</y>
-     <width>166</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QPushButton" name="retry_btn">
-      <property name="text">
-       <string>Retry</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="exit_game_Btn">
-      <property name="text">
-       <string>Exit</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
@@ -233,7 +208,6 @@ width:20px;
     </item>
    </layout>
   </widget>
-  <zorder>horizontalLayoutWidget</zorder>
   <zorder>verticalLayoutWidget</zorder>
   <zorder>verticalLayoutWidget_2</zorder>
   <zorder>horizontalLayoutWidget_2</zorder>

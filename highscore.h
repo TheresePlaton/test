@@ -7,6 +7,7 @@
 #include <QStringList>
 #include <QMap>
 #include <QDebug>
+#include "overloads.h"
 #include "snakewindow.h"
 #include "ui_snakewindow.h"
 

@@ -11,8 +11,20 @@
 #include <QtGlobal>
 #include <QTime>
 #include "snake.h"
-#include "ui_gameover.h"
 #include "gameover.h"
+#include "map.h"
+#include <QtCore>
+#include <QtGui>
+#include <QEvent>
+#include <QDebug>
+#include <QString>
+#include <QMediaPlayer>
+#include <QImage>
+#include <QMediaPlaylist>
+#include <QMessageBox>
+#include "Consumable.h"
+#include "Green_powerup.h"
+#include "wall_brick.h"
 #include "map.h"
 
 class QGraphicsScene;

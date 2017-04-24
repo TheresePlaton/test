@@ -1,25 +1,6 @@
 #include "snakewindow.h"
 #include "ui_snakewindow.h"
-#include <QtCore>
-#include <QtGui>
-#include <QEvent>
-#include <QGraphicsScene>
-#include <QKeyEvent>
-#include <QEvent>
-#include "snake.h"
-#include <QDebug>
-#include "gameover.h"
-#include "ui_gameover.h"
-#include <QString>
-#include <QMediaPlayer>
-#include <QBrush>
-#include <QImage>
-#include <QMediaPlaylist>
-#include <QMessageBox>
-#include "Consumable.h"
-#include "Green_powerup.h"
-#include "wall_brick.h"
-#include "map.h"
+
 
 SnakeWindow::SnakeWindow(QWidget *parent) :
     QMainWindow(parent),

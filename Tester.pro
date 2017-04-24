@@ -26,7 +26,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     snakewindow.cpp \
     highscore.cpp \
     gameover.cpp \
@@ -37,9 +36,11 @@ SOURCES += main.cpp\
     Consumable.cpp \
     wall_brick.cpp \
     map.cpp \
-    blue_powerup.cpp
+    blue_powerup.cpp \
+    scoreuser.cpp \
+    overloads.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     snakewindow.h \
     highscore.h \
     gameover.h \
@@ -50,9 +51,11 @@ HEADERS  += mainwindow.h \
     red_powerup.h \
     wall_brick.h \
     map.h \
-    blue_powerup.h
+    blue_powerup.h \
+    scoreuser.h \
+    overloads.h
 
-FORMS    += mainwindow.ui \
+FORMS    += \
     snakewindow.ui \
     highscore.ui \
     gameover.ui

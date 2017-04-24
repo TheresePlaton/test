@@ -1,7 +1,7 @@
 #include "highscore.h"
 #include "ui_highscore.h"
-#include "snakewindow.h"
-#include "ui_snakewindow.h"
+
+
 
 HighScore::HighScore(QWidget *parent) :
     QMainWindow(parent),
@@ -18,8 +18,7 @@ HighScore::~HighScore()
 }
 
 void HighScore::Load(){
-
-    QMap<QString,int> map;
+    QList<ScoreUser> userList;
 
     QString fPath = QGuiApplication::applicationDirPath() + "/resourses/files/save.txt";
     QFile file(fPath);
@@ -28,38 +27,48 @@ void HighScore::Load(){
         return;
     }
 
-    foreach(int item, map.values()){
-      qDebug()<<item;
-    }
 
     QDataStream in(&file);
     in.setVersion(QDataStream::Qt_5_8);
-    in>>map;
-    file.close();
+    ScoreUser scoreUser;
+    while(!in.atEnd()){
+        in >> scoreUser;
+        qDebug()<<scoreUser.getName();
+        qDebug()<<scoreUser.myScore;
+        userList.append(scoreUser);
+    }
 
-    QString name="";
-    int score=0;
+    file.close();
+    for(int k = 1; k < (userList.size()); k++){
+
+        for(int i=0 ;i <(userList.size()-1);i++ ){
+
+            if(userList.at(i).myScore < userList.at(i+1).myScore){
+                userList.swap(i,i+1);
+            }
+
+        }
+    }
 
     ui->tableWidget->setRowCount(10);
     ui->tableWidget->setColumnCount(2);
     ui->tableWidget->setHorizontalHeaderLabels(list);
     ui->tableWidget->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
-    int i=0;
-    QMapIterator<QString,int> Iter(map);
-    while(Iter.hasNext() && (i< 10)){
 
-        Iter.next();
-        name=Iter.key();
-        score=Iter.value();
+    int row =10;
+    for(int i =0;i<row;i++){
         QTableWidgetItem* item1 = new QTableWidgetItem();
         QTableWidgetItem* item2 = new QTableWidgetItem();
-        item1->setText(name);
-        item2->setText(QString::number(score));
+        item1->setText(userList.at(i).getName());
+        item2->setText(QString::number(userList.at(i).myScore));
         ui->tableWidget->setItem(i,0,item1);
         ui->tableWidget->setItem(i,1,item2);
-        i++;
     }
+
+    ui->tableWidget->setEditTriggers( QAbstractItemView::NoEditTriggers );
+
 }
+
 
 void HighScore::on_btnExit_clicked()
 {

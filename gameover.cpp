@@ -2,6 +2,7 @@
 #include "ui_gameover.h"
 #include "snakewindow.h"
 #include "ui_snakewindow.h"
+#include "overloads.h"
 #include <QFile>
 
 
@@ -23,24 +24,13 @@ GameOver::~GameOver()
 {
     delete ui;
 }
-/**
- * @brief GameOver::on_retry_btn_clicked
- *
- * user can choose to start a new game, after gameover
- */
-void GameOver::on_retry_btn_clicked()
-{
-    SnakeWindow *retryGame;
-    retryGame = new SnakeWindow();
-    this->hide();
-    retryGame->show();
-}
+
+
 
 /**
- * @brief GameOver::on_exit_game_Btn_clicked
- * user can choose to exit the game
+ * @brief GameOver::EnterScoreBoard
  */
-void GameOver::on_exit_game_Btn_clicked()
+void GameOver::EnterScoreBoard()
 {
     HighScore *scoreBoard= new HighScore();
     this->hide();
@@ -56,46 +46,24 @@ void GameOver::on_AddToscoreBoard_clicked()
     if(name==""){
         name="anonymous";
     }
-
-    QMap<QString,int> map;
-
-
+    qDebug()<< name<< "  "<<score;
+    ScoreUser user1(score,name);
     QString fPath = QGuiApplication::applicationDirPath() + "/resourses/files/save.txt";
-    QFile file(fPath);//"resourses/files/save.txt");//saveFilePath);
-
-    if(!file.open(QIODevice::ReadOnly)){
-        qDebug()<<"Could not open file hahahahah.";
-        qDebug()<<"Error: " << file.errorString();
-        return;
-    }
-
-    foreach(int item, map.values()){
-        qDebug()<<item;
-    }
-
-    QDataStream in(&file);
-    in.setVersion(QDataStream::Qt_5_8);
-    in>>map;
-
-    file.close();
-
-    map.insert(name,score);
-
-
-    QFile file1(fPath);
-    if(!file1.open(QIODevice::WriteOnly)){
+    QFile file(fPath);
+    //"resourses/files/save.txt");//saveFilePath);
+    if(!file.open(QIODevice::Append)){
         qDebug()<<"Could not open file write.";
-        qDebug()<<file1.errorString();
+        qDebug()<<file.errorString();
         return;
 
     }
 
-    QDataStream out(&file1);
+    QDataStream out(&file);
     out.setVersion(QDataStream::Qt_5_8);
-    out<<map;
+    out<<user1;
     file.flush();
     file.close();
-
+    EnterScoreBoard();
 }
 
 void GameOver::setScore(QString score){
