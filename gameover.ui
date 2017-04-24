@@ -37,7 +37,7 @@ border-style:solid;
 background-color:#3d3d3d;
 color:#e3a21a;
 padding:5px;
-font: 16pt &quot;MS Shell Dlg 2&quot;;
+font: 12pt &quot;MS Shell Dlg 2&quot;;
 
 }
 
@@ -209,13 +209,6 @@ width:20px;
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
-    <item>
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>Add your name to the scoreboard</string>
-      </property>
-     </widget>
-    </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
