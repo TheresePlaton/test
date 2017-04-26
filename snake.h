@@ -1,5 +1,8 @@
 #ifndef SNAKE_H
 #define SNAKE_H
+
+#include <QObject>
+#include "bodyofsnake.h"
 #include <QBrush>
 #include <QGraphicsRectItem>
 #include <QGraphicsItem>
@@ -11,16 +14,24 @@
 #include <QGraphicsPixmapItem>
 #include <QTime>
 #include <QtGlobal>
-#include "Green_powerup.h"
+#include <QDebug>
+#include <typeinfo>
+#include "gameover.h"
+#include "ui_gameover.h"
+#include <QPainter>
 #include "red_powerup.h"
+#include "blue_powerup.h"
+#include "green_powerup.h"
+#include "Consumable.h"
+#include <QGraphicsItem>
+
 
 /**
  * Snake class used to created the head of the snake as well as implement
  * movement methods and other snake related logic
  */
 
-#include <QObject>
-#include "bodyofsnake.h"
+
 
 class Snake : public QObject, public QGraphicsPixmapItem
 {
@@ -49,7 +60,7 @@ public:
      * @param p
      * @return
      */
-    bool collidesWithPwrUp(Consumable *p);
+    bool collidesWithPwrUp(Consumable*);
 
 
     Snake(QGraphicsScene &scene, QObject *parent = 0);
@@ -59,7 +70,7 @@ public:
      * @param choice
      * @return
      */
-    Consumable* setPowerUp(int choice);
+    Consumable* setPowerUp(int);
 
     //direction setter
     void setDirection(Direction dir);

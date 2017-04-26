@@ -31,14 +31,14 @@ SOURCES += main.cpp\
     gameover.cpp \
     bodyofsnake.cpp \
     snake.cpp \
-    Green_powerup.cpp \
-    red_powerup.cpp \
     Consumable.cpp \
     wall_brick.cpp \
     map.cpp \
-    blue_powerup.cpp \
     scoreuser.cpp \
-    overloads.cpp
+    overloads.cpp \
+    green_powerup.cpp \
+    red_powerup.cpp \
+    blue_powerup.cpp
 
 HEADERS  += \
     snakewindow.h \
@@ -47,13 +47,13 @@ HEADERS  += \
     bodyofsnake.h \
     snake.h \
     Consumable.h \
-    Green_powerup.h \
-    red_powerup.h \
     wall_brick.h \
     map.h \
-    blue_powerup.h \
     scoreuser.h \
-    overloads.h
+    overloads.h \
+    green_powerup.h \
+    red_powerup.h \
+    blue_powerup.h
 
 FORMS    += \
     snakewindow.ui \

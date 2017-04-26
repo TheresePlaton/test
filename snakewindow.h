@@ -1,17 +1,15 @@
 #ifndef SNAKEWINDOW_H
 #define SNAKEWINDOW_H
+#include <QObject>
+#include <QColor>
 #include <QKeyEvent>
 #include <QMainWindow>
 #include <QGraphicsView>
 #include <QGraphicsScene>
-#include <QObject>
 #include <QTimer>
-#include <QColor>
 #include <QBrush>
 #include <QtGlobal>
 #include <QTime>
-#include "snake.h"
-#include "gameover.h"
 #include "map.h"
 #include <QtCore>
 #include <QtGui>
@@ -22,10 +20,12 @@
 #include <QImage>
 #include <QMediaPlaylist>
 #include <QMessageBox>
+#include "green_powerup.h"
 #include "Consumable.h"
-#include "Green_powerup.h"
 #include "wall_brick.h"
-#include "map.h"
+#include "snake.h"
+#include "gameover.h"
+
 
 class QGraphicsScene;
 class Snake;

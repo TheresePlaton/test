@@ -85,13 +85,13 @@ void SnakeWindow::startNewLevel()
     scene->addItem(body);
     shead->appendBodies(*body);
 
-    pUp = new Green_Powerup();
+    pUp = new Green_powerup();
 
     //checks location of power up
     while(powerUpIntersects(pUp, &level))
     {
         qDebug()<<"position of pUp is"<<pUp->getX()<<","<<pUp->getY();
-        pUp = new Green_Powerup();
+        pUp = new Green_powerup();
     }
     qDebug()<<pUp->x()<<","<<pUp->y()<<"pixmap"<<pUp->pixmap();
     scene->addItem(pUp);
@@ -243,12 +243,12 @@ void SnakeWindow::on_start_Game_Btn_clicked()
     scene->addItem(body);
     shead->appendBodies(*body);
 
-    pUp = new Green_Powerup();
+    pUp = new Green_powerup();
 
     while(powerUpIntersects(pUp, &level))
     {
         qDebug()<<"position of pUp is"<<pUp->getX()<<","<<pUp->getY();
-        pUp = new Green_Powerup();
+        pUp = new Green_powerup();
     }
     qDebug()<<pUp->x()<<","<<pUp->y()<<"pixmap"<<pUp->pixmap();
     scene->addItem(pUp);

@@ -8,7 +8,6 @@
 #include "ui_gameover.h"
 #include <QMediaPlayer>
 #include <QPainter>
-#include "Green_powerup.h"
 #include <QGraphicsItem>
 #include "blue_powerup.h"
 
@@ -39,7 +38,7 @@ Consumable* Snake::setPowerUp(int choice)
     Consumable *consumablePowerUp;
     if(choice==1)
     {
-        consumablePowerUp = new Green_Powerup();
+        consumablePowerUp = new Green_powerup();
     }
     if(choice==2)
     {
@@ -70,6 +69,8 @@ bool Snake::collidesWithPwrUp(Consumable *p)
     //tests collision with all body parts
     for(int i=0; i<bodies.length(); i++)
     {
+        int n = bodies.length();
+        qDebug()<<"index collidepower "<<i <<"size"<<n;
         if(bodies[i]->testRect().intersects(p->testRect()))
         {
             return true;
@@ -195,6 +196,7 @@ void Snake::move()
     //moves bodies inside of the array
     for (int i = 0, n = bodies.size()-1; i < n; ++i){
         bodies[i]->setPos(bodies[i+1]->pos());
+
     }
 
 
@@ -209,6 +211,7 @@ void Snake::move()
     //qDebug()<<"Type of snake: "<<typeid(*this).name();
     for(int i=0, n =list.size(); i<n; i++)
     {
+         qDebug()<<"index i is: "<< i<< "size is"<< n;
         qDebug() << typeid(list[i]).name();
 
 
@@ -238,7 +241,8 @@ void Snake::move()
                 gameScore=gameScore+10;
 
                 scene.removeItem(p);
-                p->isEaten(*this);
+                p->isEaten();
+                this->extendSnake(p->getcolor());
                 qDebug()<<(int*)p;
 
                 continue;
