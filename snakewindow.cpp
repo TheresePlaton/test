@@ -142,8 +142,8 @@ void SnakeWindow::gameLoop()
 
     //connecting score to ui
     this->ui->label_Score->setText(QString::number(score));
-
-    this->ui->label_Level->setText(QString::number(lvl));
+    int currentLevel = lvl + 1;
+    this->ui->label_Level->setText(QString::number(currentLevel));
 
     //opens game over screen
     if(isDead)
