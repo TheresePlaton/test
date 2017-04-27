@@ -49,15 +49,16 @@ void HighScore::Load(){
             }
         }
     }
-
-    ui->tableWidget->setRowCount(10);
-    ui->tableWidget->setColumnCount(2);
-    ui->tableWidget->setHorizontalHeaderLabels(list);
-    ui->tableWidget->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
     int row =10;
     if(userList.size()<row){
         row =userList.size();
     }
+    ui->tableWidget->setRowCount(row);
+    ui->tableWidget->setColumnCount(2);
+    ui->tableWidget->setHorizontalHeaderLabels(list);
+    ui->tableWidget->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
+
+
 
     for(int i =0;i<row;i++){
         QTableWidgetItem* item1 = new QTableWidgetItem();
