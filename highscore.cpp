@@ -33,8 +33,6 @@ void HighScore::Load(){
     ScoreUser scoreUser;
     while(!in.atEnd()){
         in >> scoreUser;
-        qDebug()<<scoreUser.getName();
-        qDebug()<<scoreUser.myScore;
         userList.append(scoreUser);
     }
 
@@ -54,8 +52,11 @@ void HighScore::Load(){
     ui->tableWidget->setColumnCount(2);
     ui->tableWidget->setHorizontalHeaderLabels(list);
     ui->tableWidget->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
-
     int row =10;
+    if(userList.size()<row){
+        row =userList.size();
+    }
+
     for(int i =0;i<row;i++){
         QTableWidgetItem* item1 = new QTableWidgetItem();
         QTableWidgetItem* item2 = new QTableWidgetItem();
