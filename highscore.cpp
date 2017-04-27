@@ -37,14 +37,16 @@ void HighScore::Load(){
     }
 
     file.close();
-    for(int k = 1; k < (userList.size()); k++){
+    if(userList.size()>1){
+        for(int k = 1; k < (userList.size()); k++){
 
-        for(int i=0 ;i <(userList.size()-1);i++ ){
+            for(int i=0 ;i <(userList.size()-1);i++ ){
 
-            if(userList.at(i).myScore < userList.at(i+1).myScore){
-                userList.swap(i,i+1);
+                if(userList.at(i).myScore < userList.at(i+1).myScore){
+                    userList.swap(i,i+1);
+                }
+
             }
-
         }
     }
 
