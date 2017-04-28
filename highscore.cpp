@@ -21,6 +21,7 @@ void HighScore::Load(){
     QList<ScoreUser> userList;
 
     QString fPath = QGuiApplication::applicationDirPath() + "/resourses/files/save.txt";
+    qDebug()<<fPath;
     QFile file(fPath);
     if(!file.open(QIODevice::ReadOnly)){
         qDebug()<<"Could not open file.";
@@ -34,6 +35,7 @@ void HighScore::Load(){
     while(!in.atEnd()){
         in >> scoreUser;
         userList.append(scoreUser);
+        qDebug()<<scoreUser.getName()<<"reading from file";
     }
 
     file.close();
@@ -53,6 +55,8 @@ void HighScore::Load(){
     if(userList.size()<row){
         row =userList.size();
     }
+
+
     ui->tableWidget->setRowCount(row);
     ui->tableWidget->setColumnCount(2);
     ui->tableWidget->setHorizontalHeaderLabels(list);
