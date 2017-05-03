@@ -37,6 +37,7 @@ void SnakeWindow::gameOver()
     gameOverWindow->setScore(QString::number(totalScore));
     this->hide();
     gameOverWindow->show();
+    this->close();
 }
 
 bool SnakeWindow::powerUpIntersects(Consumable *cons, Map *map)
@@ -97,13 +98,13 @@ void SnakeWindow::startNewLevel()
 
     connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
     connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
-    gameStart->start(200);
+    gameStart->start(150);
 }
 
 void SnakeWindow::gameLoop()
 {
 
-    if(shead->getGameScore()>=300)
+    if(shead->getGameScore()>=150)
     {
         totalScore=totalScore+shead->getGameScore();
         lvl=1;
@@ -135,7 +136,7 @@ void SnakeWindow::gameLoop()
     //connecting ui progress bar to a score value
     int score = shead->getGameScore();
     this->ui->progress_bar_level->setTextVisible(false);
-    this->ui->progress_bar_level->setMaximum(300);
+    this->ui->progress_bar_level->setMaximum(150);
     this->ui->progress_bar_level->setValue(score);
 
     //connecting score to ui
@@ -186,7 +187,7 @@ void SnakeWindow::on_exit_Game_Btn_clicked()
         quitMsgBox.close();
         connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
         connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
-        gameStart->start(200);
+        gameStart->start(150);
         music->setMuted(false);
         break;
     }
@@ -207,7 +208,7 @@ void SnakeWindow::on_pause_Game_Btn_clicked()
     if(!gameIsPaused){
         connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
         connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
-        gameStart->start(200);
+        gameStart->start(150);
         music->setMuted(false);
         ui->pause_Game_Btn->setText("Pause");
 
@@ -252,7 +253,7 @@ void SnakeWindow::on_start_Game_Btn_clicked()
     scene->addItem(pUp);
     connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
     connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
-    gameStart->start(200);
+    gameStart->start(150);
 
 
 }

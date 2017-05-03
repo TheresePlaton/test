@@ -1,5 +1,5 @@
 #include "Consumable.h"
-#include <QDebug>
+
 
 
 

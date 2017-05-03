@@ -35,6 +35,7 @@ void GameOver::EnterScoreBoard()
     HighScore *scoreBoard= new HighScore();
     this->hide();
     scoreBoard->show();
+    this->close();
 
 }
 
@@ -46,7 +47,6 @@ void GameOver::on_AddToscoreBoard_clicked()
     if(name==""){
         name="anonymous";
     }
-    qDebug()<< name<< "  "<<score;
     ScoreUser user1(score,name);
     QString fPath = QGuiApplication::applicationDirPath() + "/resourses/files/save.txt";
     QFile file(fPath);

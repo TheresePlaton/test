@@ -14,7 +14,6 @@
 #include <QtCore>
 #include <QtGui>
 #include <QEvent>
-#include <QDebug>
 #include <QString>
 #include <QMediaPlayer>
 #include <QImage>

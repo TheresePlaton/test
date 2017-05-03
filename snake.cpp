@@ -1,7 +1,6 @@
 #include "snake.h"
 #include "snakewindow.h"
 #include <QTimer>
-#include <QDebug>
 #include <QObject>
 #include <typeinfo>
 #include "gameover.h"
@@ -69,8 +68,6 @@ bool Snake::collidesWithPwrUp(Consumable *p)
     //tests collision with all body parts
     for(int i=0; i<bodies.length(); i++)
     {
-        int n = bodies.length();
-        qDebug()<<"index collidepower "<<i <<"size"<<n;
         if(bodies[i]->testRect().intersects(p->testRect()))
         {
             return true;
@@ -145,13 +142,13 @@ void Snake::appendBodies(BodyOfSnake &abody)
 
 int Snake::getSnakeLength()
 {
-    //qDebug() << bodies.size()+1;
+
     return bodies.size()+1;
 }
 
 void Snake::getDir()
 {
-    qDebug()<<movingDirection;
+
 }
 
 bool Snake::getHead_in_tail()
@@ -173,7 +170,7 @@ void Snake::move()
 
     //updates last position of head to pass to tail
     lastPosition = pos();
-    //qDebug()<<lastPosition;
+
     //dx, dy to move snake object by n pixels in needed direction
     int dx, dy;
 
@@ -207,43 +204,36 @@ void Snake::move()
     }
 
     //Implements collision test.
+    /** Will return nullptr if cannot cast to consumable*
+         * Otherwise ptr to the consumable
+         * Allows for the if test below
+         * */
+    /**
+         * @brief checks whether snake collides with power up
+         * and removes power up if collision occures.
+         * Removal only occurs when consumed sets to true due
+         * to first collison.
+         */
     QList<QGraphicsItem*> list = collidingItems();
-    //qDebug()<<"Type of snake: "<<typeid(*this).name();
+
     for(int i=0, n =list.size(); i<n; i++)
     {
-         qDebug()<<"index i is: "<< i<< "size is"<< n;
-        qDebug() << typeid(list[i]).name();
 
-
-        /** Will return nullptr if cannot cast to consumable*
-             * Otherwise ptr to the consumable
-             * Allows for the if test below
-             * */
         Consumable* p =  dynamic_cast<Consumable*>(list[i]);
 
         if(p)
         {
-            /**
-                 * @brief checks whether snake collides with power up
-                 * and removes power up if collision occures.
-                 * Removal only occurs when consumed sets to true due
-                 * to first collison.
-                 */
 
             if(p->getConsumed() == false && p->boundingRect().intersects(this->boundingRect()))
             {
                 powerUpSound = new QMediaPlayer();
                 powerUpSound->setMedia(QUrl("qrc:/sounds/resourses/sounds/157217__adamweeden__video-game-gain-xp-level-up.flac"));
                 powerUpSound->play();
-                qDebug()<<"Crash!";
-                qDebug()<<p->getX();
-                qDebug()<<p->getY();
                 gameScore=gameScore+10;
 
                 scene.removeItem(p);
                 p->isEaten();
                 this->extendSnake(p->getcolor());
-                qDebug()<<(int*)p;
 
                 continue;
             }
@@ -252,8 +242,6 @@ void Snake::move()
         if(this->boundingRect().intersects(list[i]->boundingRect()))
         {
             head_in_tail=true;
-            qDebug()<<"head crashed in tail";
-            qDebug()<<head_in_tail;
         }
 
 
