@@ -215,6 +215,9 @@ width:20px;
       </widget>
      </item>
     </layout>
+    <zorder>start_Game_Btn</zorder>
+    <zorder>exit_Game_Btn</zorder>
+    <zorder>pause_Game_Btn</zorder>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget_2">
     <property name="geometry">

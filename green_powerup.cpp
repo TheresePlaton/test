@@ -25,8 +25,6 @@ Green_powerup::Green_powerup()
     powerUpPixMap = powerUpImageList[0];
     setPixmap(*powerUpPixMap);
     setPos(restX,restY);
-
-
 }
 
 

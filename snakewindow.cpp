@@ -11,6 +11,7 @@ SnakeWindow::SnakeWindow(QWidget *parent) :
     scene = new QGraphicsScene(0,0,680,440);
     scene->setBackgroundBrush(QBrush(QImage(":/images/resourses/images/background1.png")));
     ui->graphicsView_snake->setScene(scene);
+     ui->pause_Game_Btn->setVisible(false);
 
     scene->setFocus();
     //Adds background music and loops it with playlist
@@ -57,7 +58,7 @@ bool SnakeWindow::powerUpIntersects(Consumable *cons, Map *map)
 }
 
 void SnakeWindow::startNewLevel()
-{
+{   ui->pause_Game_Btn->setVisible(false);
     disconnect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
     disconnect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
 
@@ -90,10 +91,8 @@ void SnakeWindow::startNewLevel()
     //checks location of power up
     while(powerUpIntersects(pUp, &level))
     {
-        qDebug()<<"position of pUp is"<<pUp->getX()<<","<<pUp->getY();
         pUp = new Green_powerup();
     }
-    qDebug()<<pUp->x()<<","<<pUp->y()<<"pixmap"<<pUp->pixmap();
     scene->addItem(pUp);
 
     connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
@@ -109,7 +108,7 @@ void SnakeWindow::gameLoop()
         totalScore=totalScore+shead->getGameScore();
         lvl=1;
         startNewLevel();
-        qDebug()<<"Total score is: "<<totalScore;
+
     }
     shead->move();
     shead->getSnakeLength();
@@ -122,7 +121,6 @@ void SnakeWindow::gameLoop()
         int high = 3;
         int low = 1;
         int choice = qrand() % ((high + 1)-low)+low;
-        qDebug()<<choice<<"is random choise of powerup";
         delete pUp;
         pUp = shead->setPowerUp(choice);
         //if new powerup crashes with either head, tail or wall
@@ -161,7 +159,6 @@ bool SnakeWindow::getCrashed()
 
     isDead=shead->getHead_in_tail();
     return isDead;
-    qDebug()<<"isDead is: "<<isDead;
 }
 
 
@@ -202,6 +199,7 @@ void SnakeWindow::on_pause_Game_Btn_clicked()
 
     //pauses and pauses game timer and background music
     if(gameIsPaused){
+        ui->pause_Game_Btn->setText("Resume");
         disconnect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
         disconnect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
         music->setMuted(true);
@@ -211,6 +209,7 @@ void SnakeWindow::on_pause_Game_Btn_clicked()
         connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
         gameStart->start(200);
         music->setMuted(false);
+        ui->pause_Game_Btn->setText("Pause");
 
     }
 }
@@ -220,7 +219,8 @@ void SnakeWindow::on_pause_Game_Btn_clicked()
 
 void SnakeWindow::on_start_Game_Btn_clicked()
 {
-
+     ui->start_Game_Btn->setVisible(false);
+      ui->pause_Game_Btn->setVisible(true);
     //creating head of the snake item
     shead = new Snake(*scene, this);
     scene->addItem(shead);
@@ -247,12 +247,9 @@ void SnakeWindow::on_start_Game_Btn_clicked()
 
     while(powerUpIntersects(pUp, &level))
     {
-        qDebug()<<"position of pUp is"<<pUp->getX()<<","<<pUp->getY();
         pUp = new Green_powerup();
     }
-    qDebug()<<pUp->x()<<","<<pUp->y()<<"pixmap"<<pUp->pixmap();
     scene->addItem(pUp);
-
     connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
     connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
     gameStart->start(200);
