@@ -69,6 +69,7 @@ private slots:
     void on_start_Game_Btn_clicked();
 
     void handleKeyPressed(QKeyEvent *event);
+
 protected:
      bool eventFilter(QObject *object, QEvent *event);
 
@@ -86,6 +87,7 @@ private:
     Map level;
     int lvl=0;
     int totalScore=0;
+    void pause();
 };
 
 #endif // SNAKEWINDOW_H

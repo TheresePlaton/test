@@ -196,23 +196,7 @@ void SnakeWindow::on_exit_Game_Btn_clicked()
 
 void SnakeWindow::on_pause_Game_Btn_clicked()
 {
-    gameIsPaused = !gameIsPaused;
-
-    //pauses and pauses game timer and background music
-    if(gameIsPaused){
-        ui->pause_Game_Btn->setText("Resume");
-        disconnect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
-        disconnect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
-        music->setMuted(true);
-    }
-    if(!gameIsPaused){
-        connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
-        connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
-        gameStart->start(150);
-        music->setMuted(false);
-        ui->pause_Game_Btn->setText("Pause");
-
-    }
+   pause();
 }
 
 
@@ -275,7 +259,7 @@ void SnakeWindow::handleKeyPressed(QKeyEvent *event)
         shead->setDirection(Snake::Down);
         break;
     case Qt::Key_Space:
-        //pause();
+        pause();
         break;
     }
     //else resume();a
@@ -288,5 +272,25 @@ bool SnakeWindow::eventFilter(QObject *object, QEvent *event)
         return true;
     } else {
         return QObject::eventFilter(object, event);
+    }
+}
+
+void SnakeWindow::pause(){
+    gameIsPaused = !gameIsPaused;
+
+    //pauses and pauses game timer and background music
+    if(gameIsPaused){
+        ui->pause_Game_Btn->setText("Resume");
+        disconnect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
+        disconnect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
+        music->setMuted(true);
+    }
+    if(!gameIsPaused){
+        connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
+        connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
+        gameStart->start(150);
+        music->setMuted(false);
+        ui->pause_Game_Btn->setText("Pause");
+
     }
 }
