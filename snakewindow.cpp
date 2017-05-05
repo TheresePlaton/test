@@ -59,7 +59,7 @@ bool SnakeWindow::powerUpIntersects(Consumable *cons, Map *map)
 }
 
 void SnakeWindow::startNewLevel()
-{   ui->pause_Game_Btn->setVisible(false);
+{
     disconnect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
     disconnect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
 

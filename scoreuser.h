@@ -8,7 +8,7 @@ public:
     ScoreUser();
     ScoreUser(int score, const QString &name);
     QString getName()const;
-    int getScore();
+    int getScore()const;
     void setName(const QString &name);
     void setScore(int score);
     int myScore;

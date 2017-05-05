@@ -47,20 +47,15 @@ void GameOver::on_AddToscoreBoard_clicked()
     if(name==""){
         name="anonymous";
     }
-    ScoreUser user1(score,name);
+    ScoreUser scoreUser(score,name);
     QString fPath = QGuiApplication::applicationDirPath() + "/resourses/files/save.txt";
     QFile file(fPath);
-    //"resourses/files/save.txt");//saveFilePath);
     if(!file.open(QIODevice::Append)){
-        qDebug()<<"Could not open file write.";
-        qDebug()<<file.errorString();
         return;
-
     }
-
     QDataStream out(&file);
     out.setVersion(QDataStream::Qt_5_8);
-    out<<user1;
+    out<<scoreUser;
     file.flush();
     file.close();
     EnterScoreBoard();

@@ -11,7 +11,7 @@ ScoreUser::ScoreUser(int score, const QString &name)
     myName=name;
 }
 
-int ScoreUser::getScore(){
+int ScoreUser::getScore()const{
     return myScore;
 }
 QString ScoreUser::getName()const{

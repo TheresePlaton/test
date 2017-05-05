@@ -2,7 +2,7 @@
 
 QDataStream &operator<<(QDataStream &out, const ScoreUser &scoreUser)
 {
-    out << scoreUser.getName()<<scoreUser.myScore;
+    out << scoreUser.getName()<<scoreUser.getScore();
 
     return out;
 }
