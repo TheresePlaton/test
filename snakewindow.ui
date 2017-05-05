@@ -10,6 +10,9 @@
     <height>685</height>
    </rect>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::TabFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -167,6 +170,9 @@ width:20px;
     <property name="mouseTracking">
      <bool>false</bool>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::TabFocus</enum>
+    </property>
     <property name="verticalScrollBarPolicy">
      <enum>Qt::ScrollBarAlwaysOff</enum>
     </property>
@@ -187,7 +193,7 @@ width:20px;
      <item>
       <widget class="QPushButton" name="start_Game_Btn">
        <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
+        <enum>Qt::TabFocus</enum>
        </property>
        <property name="text">
         <string>Start</string>
@@ -291,8 +297,6 @@ width:20px;
  <tabstops>
   <tabstop>start_Game_Btn</tabstop>
   <tabstop>graphicsView_snake</tabstop>
-  <tabstop>exit_Game_Btn</tabstop>
-  <tabstop>pause_Game_Btn</tabstop>
  </tabstops>
  <resources/>
  <connections/>

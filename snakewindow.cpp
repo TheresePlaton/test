@@ -11,9 +11,9 @@ SnakeWindow::SnakeWindow(QWidget *parent) :
     scene = new QGraphicsScene(0,0,680,440);
     scene->setBackgroundBrush(QBrush(QImage(":/images/resourses/images/background1.png")));
     ui->graphicsView_snake->setScene(scene);
-     ui->pause_Game_Btn->setVisible(false);
-
-    scene->setFocus();
+    ui->pause_Game_Btn->setVisible(false);
+    ui->start_Game_Btn->setFocus();
+    // scene->setFocus();
     //Adds background music and loops it with playlist
     QMediaPlaylist *playlist = new QMediaPlaylist();
     playlist->addMedia(QUrl("qrc:/sounds/resourses/sounds/sonx.wav"));
@@ -185,10 +185,13 @@ void SnakeWindow::on_exit_Game_Btn_clicked()
         break;
     case QMessageBox::No:
         quitMsgBox.close();
-        connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
-        connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
-        gameStart->start(150);
-        music->setMuted(false);
+        if(gameIsStarted){
+           connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
+           connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
+           gameStart->start(150);
+           music->setMuted(false);
+        }
+
         break;
     }
 
@@ -204,43 +207,52 @@ void SnakeWindow::on_pause_Game_Btn_clicked()
 
 void SnakeWindow::on_start_Game_Btn_clicked()
 {
-     ui->start_Game_Btn->setVisible(false);
-      ui->pause_Game_Btn->setVisible(true);
-    //creating head of the snake item
-    shead = new Snake(*scene, this);
-    scene->addItem(shead);
+    start();
+}
 
-    //head reacts on key events is true
-    shead->setFocus();
-    scene->installEventFilter(this);
-
-    level.drawMap(lvl);
-    for(int i=0; i<11; ++i){
-        for (int j = 0; j < 17; ++j) {
-            void* ptr = level.getMap()[i][j];
-            if(ptr == nullptr) continue;
-            scene->addItem(level.getMap()[i][j]);
-        }
+void SnakeWindow::start(){
+    if(gameIsStarted){
+        return;
     }
+    gameIsStarted=true;
+    ui->start_Game_Btn->setVisible(false);
+    ui->pause_Game_Btn->setVisible(true);
+   //creating head of the snake item
+   shead = new Snake(*scene, this);
+   scene->addItem(shead);
+   scene->installEventFilter(this);
+   //head reacts on key events is true
+   shead->setFocus();
+   scene->installEventFilter(this);
 
-    body = new BodyOfSnake();
-    body->setPos(40,40);
-    scene->addItem(body);
-    shead->appendBodies(*body);
+   level.drawMap(lvl);
+   for(int i=0; i<11; ++i){
+       for (int j = 0; j < 17; ++j) {
+           void* ptr = level.getMap()[i][j];
+           if(ptr == nullptr) continue;
+           scene->addItem(level.getMap()[i][j]);
+       }
+   }
 
-    pUp = new Green_powerup();
+   body = new BodyOfSnake();
+   body->setPos(40,40);
+   scene->addItem(body);
+   shead->appendBodies(*body);
 
-    while(powerUpIntersects(pUp, &level))
-    {
-        pUp = new Green_powerup();
-    }
-    scene->addItem(pUp);
-    connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
-    connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
-    gameStart->start(150);
+   pUp = new Green_powerup();
+
+   while(powerUpIntersects(pUp, &level))
+   {
+       pUp = new Green_powerup();
+   }
+   scene->addItem(pUp);
+   connect(gameStart, SIGNAL(timeout()), this, SLOT(gameLoop()));
+   connect(gameStart, SIGNAL(timeout()), this, SLOT(getCrashed()));
+   gameStart->start(150);
 
 
 }
+
 //Set key behaviour
 void SnakeWindow::handleKeyPressed(QKeyEvent *event)
 {
@@ -261,6 +273,8 @@ void SnakeWindow::handleKeyPressed(QKeyEvent *event)
     case Qt::Key_Space:
         pause();
         break;
+    case Qt::Key_Enter:
+        start();
     }
     //else resume();a
 }

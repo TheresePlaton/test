@@ -83,11 +83,13 @@ private:
     bool isDead = false;
     QMediaPlayer * music;
     bool gameIsPaused=false;
+    bool gameIsStarted=false;
     Consumable *pUp;
     Map level;
     int lvl=0;
     int totalScore=0;
     void pause();
+    void start();
 };
 
 #endif // SNAKEWINDOW_H
