@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>626</height>
+    <width>799</width>
+    <height>661</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Snake</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow{
@@ -47,33 +47,31 @@ padding:0;
 
 QMenu::item:selected{
 color:#fff;
-background-color:#00aba9;
+background-color:#3d3d3d;
 }
 
 QTableWidget{
 background-color:#3d3d3d;
 color:#fff;
-  selection-background-color: #da532c;
-border:solid;
-border-width:3px;
-border-color:#da532c;
+  selection-background-color: #3d3d3d;
+border:none;
+
 }
 QHeaderView::section{
-background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(20, 158, 217, 255), stop:1 rgba(36, 158, 217, 255));
+background-color:#3d3d3d;
 border:none;
 border-top-style:solid;
 border-width:1px;
-border-top-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(20, 158, 217, 255), stop:1 rgba(36, 158, 217, 255));
-color:#fff;
+border-top-color:#3d3d3d;
 
 }
 QHeaderView{
-background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(20, 158, 217, 255), stop:1 rgba(36, 158, 217, 255));
+background-color:#3d3d3d;
 
 border:none;
 border-top-style:solid;
 border-width:1px;
-border-top-color:#149ED9;
+border-top-color:#3d3d3d;
 color:#fff;
 	font: 75 12pt &quot;Calibri&quot;;
 }
@@ -81,7 +79,7 @@ color:#fff;
 
 QTableCornerButton::section{
 border:none;
-background-color:#149ED9;
+background-color:#3d3d3d;
 }
 
 

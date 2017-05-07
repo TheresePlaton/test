@@ -70,6 +70,10 @@ private slots:
 
     void handleKeyPressed(QKeyEvent *event);
 
+    void on_actionHow_to_play_triggered();
+
+    void on_actionRules_triggered();
+
 protected:
      bool eventFilter(QObject *object, QEvent *event);
 

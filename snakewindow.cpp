@@ -175,6 +175,7 @@ void SnakeWindow::on_exit_Game_Btn_clicked()
     }
 
     QMessageBox quitMsgBox;
+    quitMsgBox.setWindowTitle("Snake");
     quitMsgBox.setText("Do you really want to quit?");
     quitMsgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
     int ret = quitMsgBox.exec();
@@ -308,3 +309,26 @@ void SnakeWindow::pause(){
 
     }
 }
+
+void SnakeWindow::on_actionHow_to_play_triggered()
+{
+    QMessageBox howToPlay;
+    howToPlay.setWindowTitle("Snake");
+    howToPlay.setText("To start the game press start button, "
+                      "press the arrows to navigate, "
+                      "and press spacebar to pause.");
+    howToPlay.exec();
+}
+
+void SnakeWindow::on_actionRules_triggered()
+{
+    QMessageBox rules;
+    rules.setWindowTitle("Snake");
+    rules.setText("You will get to the next level once you have 150 points, "
+                      "You have to play until gameover to have a chance"
+                      " to get to the scoreboard, "
+                      "if you choose to quit the game, your results will not be saved");
+    rules.exec();
+}
+
+

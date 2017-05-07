@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Snake</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog{
@@ -208,9 +208,6 @@ width:20px;
     </item>
    </layout>
   </widget>
-  <zorder>verticalLayoutWidget</zorder>
-  <zorder>verticalLayoutWidget_2</zorder>
-  <zorder>horizontalLayoutWidget_2</zorder>
  </widget>
  <resources/>
  <connections/>
